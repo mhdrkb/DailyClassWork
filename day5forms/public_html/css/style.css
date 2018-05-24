@@ -1,0 +1,43 @@
+.maincontainer{
+    width: 100%;
+    height: auto;
+    background-color: bisque;
+}
+.container{
+    width: 1100px;
+    height: 900px;
+    margin: 0 auto;
+    background-color: bisque;
+}
+.menu{
+    height: 200px;
+    background-color: brown;
+    width: 100%;
+}
+.body{
+    height: 600px;
+    width: 100%;
+    background-color: yellow;
+}
+.left{
+    height: 100%;
+    width: 30%;
+    background-color: violet;
+    float: left;
+}
+.right{
+    height: 100%;
+    background-color: tomato;
+    width: 70%;
+    float: left;
+}
+.formelement{
+    margin-left: 100px;
+    margin-top: 20px;
+    width: 300px;
+}
+.footer{
+    height: 100px;
+    width: 100%;
+    background-color: darkgray;
+}

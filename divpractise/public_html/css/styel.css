@@ -1,0 +1,46 @@
+.maincontainer{
+    margin: 0 auto;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+}
+.container{
+    margin: 0 auto;
+    width: 1100px;
+    height: auto;
+    background-color:  blueviolet;
+}
+.top{
+    height: 100px;
+    width: 100%;
+    background-color:  brown;
+}
+.bootom{
+    height: 400px;
+    width: 100%;
+    background-color: turquoise;
+}
+.bottom1{
+    float: left;
+    background-color: slateblue;
+    height: 100%;
+    width: 25%;
+}
+.bottom2{
+    float: left;
+    background-color: darkmagenta;
+    height: 100%;
+    width: 25%;
+}
+.bottom3{
+    float: left;
+    background-color: dimgrey;
+    height: 100%;
+    width: 25%;
+}
+.bottom4{
+    float: left;
+    background-color: gold;
+    height: 100%;
+    width: 25%;
+}

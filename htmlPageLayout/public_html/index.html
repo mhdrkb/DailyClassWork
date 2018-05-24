@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <nav>
+            <a href="/html/" target="_blank">HTML</a> |
+            <a href="/css/" target="_blank">CSS</a> |
+            <a href="/js/" target="_blank">Javascript</a> |
+            <a href="/jquery/" target="_blank">jQuery</a>
+        </nav>
+        <main>
+            <article>
+                <header>
+                    <h1>Title of Articles</h1>
+                    <!-- Post dat: byline, Dateline-->
+                </header>
+                <main>
+                    <!--Article content-->
+                    <aside><!--pull Quote--></aside>
+                </main>
+                <aside>
+                    <!--comment section-->
+                </aside>
+                <footer>
+                    <!--Post Date: Tag, Categories, Navigation-->
+                </footer>
+            </article>
+        </main>
+        <aside>
+            <!--website sidebar: Advertising post index, login forms -->
+        </aside>
+        <form action="#" method="get">
+            <input list="browsers" name="browser"/>
+            <datalist id="browsers">
+                <option value="InternetExplorer" label="InternetExplorer"></option>
+                <option value="Firefox" label="Firefox"></option>
+                <option value="Googlechrome" label="Googlechrome"></option>
+                <option value="opera" label="opera"></option>
+                <option value="safari" label="safari"></option>
+            </datalist>
+            <input type="submit" value="submit"/>
+        </form><br/>
+        <canvas id="mycanvas" width="300" height="200" style="border: 1px solid black">
+            browser does not support canvas
+        </canvas>
+        <script>
+            var canvas = document.getElementById("mycanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle = "red";
+            ctx.fillRect(25,25,250,150);
+        </script>
+        <article>
+            <header>
+                <h1>Most important heading here</h1>
+                <h3>Most important heading here</h3>
+                <p>Lorem Ipsum dolor set amet..Lorem Ipsum dolor set amet..</p>
+            </header>
+            <p>Lorem Ipsum dolor set amet..</p>
+        </article>
+        <form action="#" method="get">
+            Username: <input type="text" name="User_name"/>
+            Encryption: <keygen name="seciruty">
+            <input type="submit">
+        </form>
+        <hr/>
+        <meter value="2" min="0" max="10">2 out of 10</meter><br/>
+        <meter value="0.6">60%</meter>
+        <hr/>
+        Downloading progress:
+        <progress value="45" max="100"></progress>
+        <hr/>
+        <h1>Time tag</h1>
+        <p>we open at <time>10:00</time> every morning.</p>
+        <p>I had a date on <time datetime="2018-02-14 19:00">Valentines Day</time>.</p>
+        <form oninput="x.value=parseInt(a.value)+ parseInt(b.value)">
+            Sum of a and b( a + b ): <input type="range" id="a" value="0" max="50000"> + <input type="number" id="b" value="0"> = <output name="x" for="a b"></output>
+        </form>
+        <details>
+            <summary>Copyright 1999-2004</summary>
+            <p> - Mehedee Hasan. All rights reserved</p>
+            <p>All contents and graphics of this web site are the property of the company.</p>
+        </details>
+    </body>
+</html>

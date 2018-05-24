@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Table Design</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .column{
+                background-color: bisque;
+                text-align: center;
+                height: 150px;
+                width: 150px;
+                margin: 0px;
+                padding: 0px;
+                border: 1px solid black;
+            }
+            table{
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td class="column">1</td>
+                <td class="column">2</td>
+                <td class="column">3</td>
+                <td class="column">4</td>
+                <td class="column">5</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="column">6</td>
+                <td colspan="2" class="column">7</td>
+                <td rowspan="2" class="column">8</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="column">9</td>
+            </tr>
+            <tr>
+                <td colspan="5" class="column">10</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="column">11</td>
+                <td colspan="3" class="column">12</td>
+            </tr>
+        </table>
+
+    </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Home page</title>
+		<style type="text/css">
+			#heading{
+				color: red;
+				font-size: 50px;
+			}
+			#idpara{
+				color: green;
+				font-size: 20px;
+			}
+			#idpara2{
+				color: orange;
+				font-size: 25px;
+				font-weight: bold;
+				font-style: italic;
+			}
+			.classpara{
+				color: purple;
+				font-size: 25px;
+			}
+			a{
+				text-decoration: none;
+				font-size: 40px;
+				color: green;
+				background-color: yellow;
+			}
+		</style>
+		<script type="text/javascript">
+			function hi(){
+				alert("This is onclick message");
+			}
+			function hi1(){
+				alert("This is double click atert message");
+			}
+			function hi2(){
+				alert("This is mouse down alert message ");
+			}
+			function hi3(){
+				alert("this is mouse up alert message");
+			}
+			function hi4(){
+				alert("this is mouse over alert message");
+			}
+			function hi5(){
+				alert("This is mouse move alert message");
+			}
+			function hi6(){
+				alert("This is mouse out alert message ");
+			}
+			function hi7(){
+				alert("this is mouse leave alert message");
+			}
+			function hi8(){
+				alert("This is on key press alert message");
+			}
+			function hi9(){
+				alert("This is on key down alert message ");
+			}
+			function hi10(){
+				alert("this is on key up alert message");
+			}
+		</script>
+	</head>
+	<body>
+		<h1 id="heading">This is Home Page</h1>
+		<p id="idpara">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard </p>
+		<p id="idpara2">Contrary to popular belief, <a href="https://www.lipsum.com" title="Go to Lorem Ipsum Page">Lorem Ipsum</a> is not simply random text. It has roots in a piece of classical</p>
+		<p class="classpara">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+		<p class="classpara">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical</p>
+		<p class="classpara">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+		<a href="https://www.google.com/" title=" Go to Google Page">Google</a>
+		<h2> Inline CSS</h2>
+		<p style="color:red; text-decoration: underline; text-transform: uppercase; font-style: italic; font-weight: bold; font-size: 20px;">The standard chunk of Lorem Ipsum used since the 1500s</p>
+		
+		<h2>Events</h2>
+		<button onclick="hi()">Click Me :: onclick event</button><br/><br/>
+		<button ondblclick="hi1()">Click Me :: on double click event</button><br/><br/>
+		<button onmousedown="hi2()">Click Me :: on mouse down event</button><br/><br/>
+		<button onmouseup="hi3()">Click Me :: on mouse up event</button><br/><br/>
+		<button onmouseover="hi4()">Click Me :: on mouse over event</button><br/><br/>
+		<button onmousemove="hi5()">Click Me :: on mouse move event</button><br/><br/>
+		<button onmouseout="hi6()">Click Me :: on mouse out event</button><br/><br/>
+		<button onmouseleave="hi7()">Click Me :: on mouse leave event</button><br/><br/>
+		<button onkeypress="hi8()">Click Me :: on key press event</button><br/><br/>
+		<button onkeydown="hi9()">Click Me :: on key down event</button><br/><br/>
+		<button onkeyup="hi10()">Click Me :: on key up event</button>
+	</body>
+</html>
