@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Responsive Utilities</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid bg-success">
+            <div class="container bg-primary">
+                <h1>Content visibility in devices using hidden and visible command</h1>
+                <div class = "row">
+
+                    <div class = "col-xs-6 col-sm-3">
+
+                        <span class = "hidden-xs">Extra small</span>
+                        <span class = "visible-xs">Visible on x-small</span>
+                    </div>
+
+                    <div class = "col-xs-6 col-sm-3">
+
+                        <span class = "hidden-sm">Small</span>
+                        <span class = "visible-sm">Visible on small</span>
+                    </div>
+
+                    <div class = "clearfix visible-xs"></div>
+
+                    <div class = "col-xs-6 col-sm-3">
+
+                        <span class = "hidden-md">Medium</span>
+                        <span class = "visible-md">Visible on medium</span>
+                    </div>
+
+                    <div class = "col-xs-6 col-sm-3">
+
+                        <span class = "hidden-lg">Large</span>
+                        <span class = "visible-lg">Visible on large</span>
+                    </div>
+                    <h1>Drop down Menu</h1>
+                    <div class = "dropdown">
+
+                        <button type = "button" class = "btn dropdown-toggle bg-gray" id = "dropdownMenu1" data-toggle = "dropdown">
+                            Topics
+                            <span class = "caret"></span>
+                        </button>
+
+                        <ul class = "dropdown-menu" aria-labelledby = "dropdownMenu1">
+                            <li><a class="glyphicon glyphicon-apple" href = "#">Java</a></li>
+                            <li><a class="glyphicon glyphicon-bell" href = "#">Data Mining</a></li>
+                            <li><a class="glyphicon glyphicon-cloud" href = "#">Data Communication/Networking</a></li>
+                            <li class = "divider"></li>
+                            <li><a class="glyphicon glyphicon-bed" href = "#">Separated link</a></li>
+                        </ul>
+
+                    </div>
+                    <h1>Button Group</h1>
+                    <h2>1. In line button group</h2>
+                    <div class = "btn-group">
+
+                        <button type = "button" class = "btn btn-default">Button 1</button>
+                        <button type = "button" class = "btn btn-default">Button 2</button>
+                        <button type = "button" class = "btn btn-default">Button 3</button>
+
+                    </div>
+                    <h2>2. In line button group with button tool bar for complex button group</h2>
+                    <div class = "btn-toolbar" role = "toolbar">
+
+                        <div class = "btn-group">
+                            <button type = "button" class = "btn btn-default">Button 1</button>
+                            <button type = "button" class = "btn btn-default">Button 2</button>
+                            <button type = "button" class = "btn btn-default">Button 3</button>
+                        </div>
+
+                        <div class = "btn-group">
+                            <button type = "button" class = "btn btn-default">Button 4</button>
+                            <button type = "button" class = "btn btn-default">Button 5</button>
+                            <button type = "button" class = "btn btn-default">Button 6</button>
+                        </div>
+
+                        <div class = "btn-group">
+                            <button type = "button" class = "btn btn-default">Button 7</button>
+                            <button type = "button" class = "btn btn-default">Button 8</button>
+                            <button type = "button" class = "btn btn-default">Button 9</button>
+                        </div>
+
+                    </div>
+                    <h2>3. In line button group to resize button group</h2>
+                    <div class = "btn-group btn-group-lg">
+                        <button type = "button" class = "btn btn-default">Button 1</button>
+                        <button type = "button" class = "btn btn-default">Button 2</button>
+                        <button type = "button" class = "btn btn-default">Button 3</button>
+                    </div>
+
+                    <div class = "btn-group btn-group-sm">
+                        <button type = "button" class = "btn btn-default">Button 4</button>
+                        <button type = "button" class = "btn btn-default">Button 5</button>
+                        <button type = "button" class = "btn btn-default">Button 6</button>
+                    </div>
+
+                    <div class = "btn-group btn-group-xs">
+                        <button type = "button" class = "btn btn-default">Button 7</button>
+                        <button type = "button" class = "btn btn-default">Button 8</button>
+                        <button type = "button" class = "btn btn-default">Button 9</button>
+                    </div>
+                    <h2>4. Nested button group</h2>
+                    <div class = "btn-group">
+                        <button type = "button" class = "btn btn-default">Button 1</button>
+                        <button type = "button" class = "btn btn-default">Button 2</button>
+
+                        <div class = "btn-group">
+                            <button type = "button" class = "btn btn-default dropdown-toggle" data-toggle = "dropdown">
+                                Dropdown
+                                <span class = "caret"></span>
+                            </button>
+
+                            <ul class = "dropdown-menu">
+                                <li><a href = "#">Dropdown link 1</a></li>
+                                <li><a href = "#">Dropdown link 2</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <h2>4. Nested button group vertical</h2>
+                    <div class = "btn-group-vertical">
+                        <button type = "button" class = "btn btn-default">Button 1</button>
+                        <button type = "button" class = "btn btn-default">Button 2</button>
+
+                        <div class = "btn-group-vertical">
+                            <button type = "button" class = "btn btn-default dropdown-toggle" data-toggle = "dropdown">
+                                Dropdown
+                                <span class = "caret"></span>
+                            </button>
+
+                            <ul class = "dropdown-menu">
+                                <li><a href = "#">Dropdown link 1</a></li>
+                                <li><a href = "#">Dropdown link 2</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </body>
+</html>
