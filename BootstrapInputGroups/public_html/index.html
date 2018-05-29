@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Input Groups</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid bg-success">
+            <div class="container bg-primary">
+                
+                <h1>Basic Input Groups</h1>
+                <div style = "padding: 100px 100px 10px;">
+                    <form class = "bs-example bs-example-form" role = "form">
+                        <div class = "input-group">
+                            <span class = "input-group-addon">@</span>
+                            <input type = "text" class = "form-control" placeholder = "twitterhandle">
+                        </div>
+                        <br>
+                        <div class = "input-group">
+                            <input type = "text" class = "form-control">
+                            <span class = "input-group-addon">.00</span>
+                        </div>
+                        <br>
+                        <div class = "input-group">
+                            <span class = "input-group-addon">$</span>
+                            <input type = "text" class =" form-control">
+                            <span class = "input-group-addon">.00</span>
+                        </div>
+                    </form>
+                </div>
+                
+                <h1>Input Group Sizing</h1>
+                <div style = "padding: 100px 100px 10px;">
+                    <form class = "bs-example bs-example-form" role = "form">
+                        <div class = "input-group input-group-lg">
+                            <span class = "input-group-addon">@</span>
+                            <input type = "text" class = "form-control" placeholder = "Twitterhandle">
+                        </div>
+                        <br>
+                        <div class = "input-group">
+                            <span class = "input-group-addon">@</span>
+                            <input type = "text" class = "form-control" placeholder = "Twitterhandle">
+                        </div>
+                        <br>
+                        <div class = "input-group input-group-sm">
+                            <span class = "input-group-addon">@</span>
+                            <input type = "text" class = "form-control" placeholder = "Twitterhandle">
+                        </div>
+                    </form>
+                </div>
+                
+                <h1>Check boxes and Radio Add ons</h1>
+                <div style = "padding: 100px 100px 10px;">
+                    <form class = "bs-example bs-example-form" role = "form">
+                        <div class = "row">
+                            <div class = "col-lg-6">
+                                <div class = "input-group">
+                                    <span class = "input-group-addon">
+                                        <input type = "checkbox">
+                                    </span>
+                                    <input type = "text" class = "form-control">
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            <div class = "col-lg-6">
+                                <div class = "input-group">
+                                    <span class = "input-group-addon">
+                                        <input type = "radio">
+                                    </span>
+                                    <input type = "text" class = "form-control">
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </form>
+                </div>
+                
+                <h1>Button Add ons</h1>
+                <div style = "padding: 100px 100px 10px;">
+                    <form class = "bs-example bs-example-form" role = "form">
+                        <div class = "row">
+                            <div class = "col-lg-6">
+                                <div class = "input-group">
+                                    <span class = "input-group-btn">
+                                        <button class = "btn btn-default" type = "button">
+                                            Go!
+                                        </button>
+                                    </span>
+                                    <input type = "text" class = "form-control">
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            <div class = "col-lg-6">
+                                <div class = "input-group">
+                                    <input type = "text" class = "form-control">
+                                    <span class = "input-group-btn">
+                                        <button class = "btn btn-default" type = "button">
+                                            Go!
+                                        </button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </form>
+                </div>
+                
+                <h1>Buttons with Dropdowns</h1>
+                <div style = "padding: 100px 100px 10px;">
+                    <form class = "bs-example bs-example-form" role = "form">
+                        <div class = "row">
+                            <div class = "col-lg-6">
+                                <div class = "input-group">
+                                    <div class = "input-group-btn">
+                                        <button type = "button" class = "btn btn-default dropdown-toggle" 
+                                                data-toggle = "dropdown">
+                                            DropdownMenu 
+                                            <span class = "caret"></span>
+                                        </button>
+                                        <ul class = "dropdown-menu">
+                                            <li><a href = "#">Action</a></li>
+                                            <li><a href = "#">Another action</a></li>
+                                            <li><a href = "#">Something else here</a></li>
+                                            <li class = "divider"></li>
+                                            <li><a href = "#">Separated link</a></li>
+                                        </ul>
+                                    </div><!-- /btn-group -->
+                                    <input type = "text" class = "form-control">
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            <div class = "col-lg-6">
+                                <div class = "input-group">
+                                    <input type = "text" class = "form-control">
+                                    <div class = "input-group-btn">
+                                        <button type = "button" class = "btn btn-default dropdown-toggle" 
+                                                data-toggle = "dropdown">
+                                            DropdownMenu 
+                                            <span class = "caret"></span>
+                                        </button>
+                                        <ul class = "dropdown-menu pull-right">
+                                            <li><a href = "#">Action</a></li>
+                                            <li><a href = "#">Another action</a></li>
+                                            <li><a href = "#">Something else here</a></li>
+                                            <li class = "divider"></li>
+                                            <li><a href = "#">Separated link</a></li>
+                                        </ul>
+                                    </div><!-- /btn-group -->
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </form>
+                </div>
+                
+                <h1>Segmented Buttons</h1>
+                <div style = "padding: 100px 100px 10px;">
+                    <form class = "bs-example bs-example-form" role = "form">
+                        <div class = "row">
+                            <div class = "col-lg-6">
+                                <div class = "input-group">
+                                    <div class = "input-group-btn">
+                                        <button type = "button" class = "btn btn-default" 
+                                                tabindex = "-1">Dropdown Menu</button>
+                                        <button type = "button" class = "btn btn-default dropdown-toggle" 
+                                                data-toggle = "dropdown" tabindex = "-1">
+                                            <span class = "caret"></span>
+                                            <span class = "sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class = "dropdown-menu">
+                                            <li><a href = "#">Action</a></li>
+                                            <li><a href ="#">Another action</a></li>
+                                            <li><a href = "#">Something else here</a></li>
+                                            <li class = "divider"></li>
+                                            <li><a href = "#">Separated link</a></li>
+                                        </ul>
+                                    </div><!-- /btn-group -->
+                                    <input type = "text" class = "form-control">
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            <div class = "col-lg-6">
+                                <div class = "input-group">
+                                    <input type = "text" class = "form-control">
+                                    <div class = "input-group-btn">
+                                        <button type = "button" class = "btn btn-default" tabindex = "-1">
+                                            Dropdown Menu
+                                        </button>
+                                        <button type = "button" class = "btn btn-default dropdown-toggle" 
+                                                data-toggle = "dropdown" tabindex = "-1">
+                                            <span class = "caret"></span>
+                                            <span class = "sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class = "dropdown-menu pull-right">
+                                            <li><a href = "#">Action</a></li>
+                                            <li><a href = "#">Another action</a></li>
+                                            <li><a href = "#">Something else here</a></li>
+                                            <li class = "divider"></li>
+                                            <li><a href = "#">Separated link</a></li>
+                                        </ul>
+                                    </div><!-- /btn-group -->
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
