@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+				<script>
+					var zoo=new Array("zebra","lions","apes","tigers",34,90,23,"Wath","Dog");
+					document.write("<p>Animals<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+					////////slice///////////////
+					document.write("sliced portion of the array"+"<br/>");
+					document.write(zoo.slice(2,4)+"<br/>");///a portion of array inside
+					document.write(zoo.slice(0,2)+"<br/>");///first two value
+					document.write(zoo.slice(-1)+"<br/>");////last element of the array
+					document.write(zoo.slice(-4)+"<br/>");////last 4 element of the array
+					document.write(zoo.slice(4)+"<br/>");////Eleminating first 4 element then print the rest of the elements of the array
+					document.write(zoo.slice(1)+"<br/>");////Eleminating first element then print the rest of the elements of the array
+					document.write(zoo.slice(9)+"<br/>");
+                </script>
+            </div>
+        </div>
+    </body>
+</html>

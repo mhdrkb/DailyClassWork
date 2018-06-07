@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+				<script>
+					var std=['arefin','Mortaza','moly',90,80,23];
+					document.write(std[2]+" "+std[4]+"<br/>");
+					document.write("<hr/>");
+					
+					document.write("Printig full arry with array name"+"<br/>");
+					document.write([std]+"<br/>");
+					document.write("<hr/>");
+					
+					document.write("Printig full array using for loop"+"<br/>");
+					for(i=0; i<std.length; i++){
+						document.write(std[i]+"<br/>");
+						}
+					document.write("<hr/>");
+						
+                	var students = new Array(5);
+					document.write("the students array length is = "+students.length+"<br/>")
+						students[0]='mhd';
+						students[1]='rkb';
+						students[2]=91;
+						students[3]='hsn';
+						students[4]=22;
+					document.write([students]+"<br/>");
+					document.write("<hr/>");
+					
+					var info={firstName:'Mehedee',lastName:'Hasan',age:22,gender:'Male'}
+					document.write(info.firstName +" "+ info.lastName +",Age-"+ info.age +",Gender-"+ info.gender);
+					document.write("<hr/>");
+					
+					//to add all the elemen of the array as an one string
+					///////Array:join()////
+					var trees = new Array("Mango","Apple","Orange","Pine","Oak");
+					var bigBush=trees.join();
+					document.write(bigBush + "<br/>");
+					document.write("Type of trees="+ typeof(trees) + "<br/>");
+					document.write("Type of bigBush="+ typeof(bigBush) + "<br/>");
+					var Bush=trees.join("myText");
+					document.write(Bush + "<br/>");
+					var space=trees.join(" ");
+					document.write(space + "<br/>");
+					document.write("<hr/>");
+					
+					//////toString///
+					var names=['a','b','c'];
+					document.write("Type of names="+ typeof names + "<br/>");
+					var newNames=names.toString();
+					document.write(newNames + "<br/>");
+					document.write("Type of newNames="+ typeof newNames + "<br/>");
+					document.write("<hr/>");
+					
+					////////////////////////concat//////////////
+					var trees1=new Array("Elm","Pine","Oak");
+					var trees2=new Array("Amm","Jam","Kathal");
+					var addedArray=trees1.concat(trees2);
+					document.write(addedArray + "<br/>");
+					document.write("Type of addedArray="+ typeof addedArray + "<br/>");
+					document.write("<hr/>");
+					
+					/////////shorting/////////////
+					addedArray.sort();
+					document.write(addedArray);
+					document.write("<hr/>");
+					
+					addedArray.reverse();
+					document.write(addedArray);
+					document.write("<hr/>");
+					
+					std.sort();
+					document.write(std);
+					document.write("<hr/>");
+                </script>
+            </div>
+        </div>
+    </body>
+</html>

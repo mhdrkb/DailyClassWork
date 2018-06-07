@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+				<script>
+					var zoo=new Array("zebra","lions","apes","tigers","Wath","Dog");
+					document.write("<p>Animals<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+					//////////////Splice to add element at any position of the array without deleting any element//////////
+					zoo.splice(3,1,"Elephant");
+					document.write("<p>After splicing to add element at 3 index and delete the next one element in new Animal<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+					zoo.splice(0,2,"Cow");
+					document.write("<p>After splicing to add element at 0 index and delete the next 2 element in new Animal<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+					zoo.splice(5,0,"Horse","Whale");
+					document.write("<p>After splicing to add 2 element at 5 6 index in new Animal<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+                </script>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+				<script>
+					var zoo=new Array("zebra","lions","apes","tigers","Wath","Dog");
+					document.write("<p>Animals<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+					///////push//////////
+					zoo.push("Cat");/////////////push an element at the last point of array
+					document.write("<p>Pushed new Animals<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+					//////////////pop//////////
+					zoo.pop();/////////////pop an element from the last point of array
+					document.write("<p>Popped an Animals<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+					//////////////Shift//////////
+					zoo.shift();///////////shift an element from left, actually remove
+					document.write("<p>Shifted a Animals from the left<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+					//////////////unShift//////////
+					zoo.unshift("Birds");///////////unshift an element to the left, actually add left
+					document.write("<p>unShifted a new Animal to the left<p>");
+					for(i=0; i<zoo.length; i++){
+						document.write(zoo[i]+"<br/>");
+					}
+					
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
