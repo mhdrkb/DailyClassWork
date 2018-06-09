@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+				<script>
+					//////////////////////JS + add or concatenate operator////////////////////
+					//////////////+ as Add //////////
+					var x=10;
+					var y=5;
+					var result=x+y;
+					document.write("Result: "+ result);
+					document.write("<hr/>");
+					
+					//////+ as concatenate///////
+					var fName="mhd";
+					var lName="rkb";
+					var fullName=fName+" "+lName;
+					document.write("Full Name: " + fullName);
+					document.write("<hr/>");
+					
+					//////////////- as Substract or negative //////////
+					/////////- as Substract////////////
+					var p=10;
+					var q=5;
+					var result1=p-q;
+					document.write("Result1: "+ result1);
+					document.write("<hr/>");
+					/////////- as negative////////////
+					var r=10;
+					var s=-r;////////negation here/////
+					var result2=r-s;
+					var result3=r+s;
+					document.write("Result2: "+ result2 +"<br/>");
+					document.write("Result3: "+ result3);
+					document.write("<hr/>");
+					//////////multiply////////
+					var l=15;
+					var m=10;
+					var result4=l*m;
+					document.write("Result4: "+ result4 +"<br/>");
+					///////divide//////////
+					var result5=l/m;
+					document.write("Result4: "+ result5 +"<br/>");
+					//////modulas////////
+					var result6=l%m;
+					document.write("Result4: "+ result6 +"<br/>");
+					document.write("<hr/>");
+					///++ increment -- decrement
+					++x; ///pre increment
+					--y; ///pre decrement
+					p++; ///post increment
+					q--; ///post decrement
+					document.write("X: "+ x +" Y: "+ y +" P: "+ p +" Q: "+ q +"<br/>");
+					document.write("<hr/>");
+					////Comparison operator/////
+					///less than operator
+					var result7 = x < y;
+					document.write("Result of (x is less than y) "+ result7 +"<br/>");
+					///greater than operator
+					var result8 = x > y;
+					document.write("Result of (x>y) "+ result8 +"<br/>");
+					///less than or equal operator
+					var result9 = x <= y;
+					document.write("Result of (x<=y) "+ result9 +"<br/>");
+					///greater than or equal operator
+					var result10 = x >= y;
+					document.write("Result of (x>=y) "+ result10 +"<br/>");
+					document.write("<hr/>");
+					/////&&  logical AND , == Test or Equality/////
+					var m=10;
+					var n=5;
+					if((m==10)&&(n==4)){
+						document.write("Both condition are true"+"<br/>");
+						}else{
+							document.write("Both or single one condition are false"+"<br/>");
+							}
+					/////   ||  logical OR , == Test or Equality, ====strictly type(same type of data)/////
+					if((m==10)||(n==4)){
+						document.write("Both or a single condition are true"+"<br/>");
+						}else{
+							document.write("Both condition are false"+"<br/>");
+							}
+					document.write("<hr/>");
+					///////////== Test or Equality, ====strictly type(same type of data)/////
+					var ab=10;
+					var cd="10";
+					///////////== Test or Equality,
+					if(ab==cd){
+						document.write("Both condition are true"+"<br/>");
+						}else{
+							document.write("Both or a single condition are true"+"<br/>");
+							}////it will check value in var as it is equal or not, both in string and number
+							////==== strictly type(same type of data)/////
+					if(ab===cd){
+						document.write("Both condition are true"+"<br/>");
+						}else{
+							document.write("Both or a single condition are False"+"<br/>");
+							}////it will check value in var as it is equal or not, both in string and number, and the data type.
+					
+                </script>
+            </div>
+        </div>
+    </body>
+</html>

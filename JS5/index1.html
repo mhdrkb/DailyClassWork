@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+				<script>
+					///=, +=,-=,*=,/=,%=
+					x=10;   ////////assign
+					document.write("Result of x= "+ x +"<br/>");
+					x+=8;  ////////x=x+5
+					document.write("The new Result of x= "+ x +"<br/>");
+					x-=4;   ////////x=x-8
+					document.write("The new Result of x= "+ x +"<br/>");
+					x*=2;   ////////x=x*2
+					document.write("The new Result of x= "+ x +"<br/>");
+					x/=4;  ////////x=x/4
+					document.write("The new Result of x= "+ x +"<br/>");
+					x%=3;  ////////x=x%3
+					document.write("The new Result of x= "+ x +"<br/>");
+					document.write("<hr/>");
+					
+					//////// (?:) Ternary operator:- condition ? True message : False message
+					var age = 25;
+					var rs = age >20 ? true :false;
+					document.write("Result: "+ rs +"<br/>");
+					var ss = age >30 ? true :false;
+					document.write("Result: "+ ss +"<br/>");
+					var wc = age >= 18 ? "welcome" : "Not Permitted" ;
+					document.write("The age over 18 are "+ wc +"<br/>");
+					document.write("<hr/>");
+					
+					
+					/////typeof operator(various of typeof variable)
+					var salary=50000;
+					var name="Donald J Trump";
+					var students=['Arefin','Moly','Mita'];
+					var result=true;
+					var abc;
+					var rs=null;
+					document.write("salary for number type data: "+ typeof salary +"<br/>");
+					document.write("name for String type data: "+ typeof name +"<br/>");
+					document.write("Students for object type data: "+ typeof students +"<br/>");
+					document.write("result for bolean type data: "+ typeof result +"<br/>");
+					document.write("abc for undefined type: "+ typeof abc +"<br/>");
+					document.write("rs for null type, actually object type: "+ typeof rs +"<br/>"); ///will show object type because everything is object in js
+					document.write("<hr/>");
+					/// delete operator
+					var ppp=[10,20,30];
+					document.write([ppp] +"<br/>");
+					document.write("After deleting an element using delete operator" + "<br/>");
+					delete(ppp[1]);
+					document.write([ppp] +"<br/>");
+					document.write("<hr/>");
+                </script>
+                <a href="javascript:void alert('WOW! JavaScript is Awesome!!!')">Hit Me</a>
+            </div>
+        </div>
+    </body>
+</html>
