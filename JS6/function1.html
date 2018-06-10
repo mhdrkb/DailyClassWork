@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+				<script>
+					document.write("***************Function in Js*******************" + "<br/>");
+					function simpleFunction(){
+						document.write("Hello World...!"+ "<br/>");
+					}
+					simpleFunction();
+					document.write("<hr/>");
+					
+					
+					function nameArguments(fn,mn,ln){
+						document.write("Full Name: "+ fn + " " + mn + " " + ln+ "<br/>");
+					}
+					nameArguments("Mr.","Donald","Trump");
+					document.write("<hr/>");
+					
+					
+					function name(fn,mn,ln){
+						var fullname= fn + " " + mn + " " + ln;
+						return fullname;
+					}
+					document.write(name("Mr.","Mehedee","Hasan"+ "<br/>"));
+					document.write("<hr/>");
+					
+					function sum(x,y){
+						var z=x+y;
+						return z;
+						}
+					document.write("Sum Result is: " + sum(parseInt(10), parseInt(20))+ "<br/>");
+					document.write("Sum Result is: " + sum(44, 66)+ "<br/>");
+					document.write("<hr/>");
+					
+					//sumation of a series
+					var x=0;
+					function sum1(start, end){
+						while(start<=end){
+							x+=start;
+							start++;
+							}
+						return x;
+						}
+					document.write("Sum Result is: "+ sum1(1,10)+ "<br/>");
+					document.write("<hr/>");
+                </script>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+				<script>//sumation of a series
+					var sum=0;
+					function sum1(start, end){
+						if(start<=end){
+						while(start<=end){
+							sum+=start;
+							start++;
+							}
+						}else{
+							while(start>=end){
+							sum+=start;
+							start--;
+							}
+							}
+						return sum;
+						}
+					
+					var  sn=parseInt(prompt("Enter first Number"));
+					var  en=parseInt(prompt("Enter first Number"));
+					document.write("Sum Result is: "+ sum1(sn,en)+ "<br/>");
+					document.write("<hr/>");
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
