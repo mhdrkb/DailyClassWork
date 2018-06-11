@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+				<script>
+				function dogCrate(x,y,z){
+					var size=x*y*z;
+					var message="Your pup will have "+size;
+					message+=" square inches in crate.";
+					document.write(message+"<br/>");
+					}
+					dogCrate(15,30,50);
+					document.write("<hr/>");
+					
+					var BidA=33;
+					var BidB=24;
+					var bestBid=Math.max(BidA,BidB);
+					var message="The best bid is $"+bestBid;
+					document.write(message+"<br/>");
+					document.write("<hr/>");
+					
+					var alpha="high";
+					var beta="low";
+					var sms="the condition is not met";
+					if(beta>alpha){
+						sms="The condition is met";
+						}
+					document.write(sms+"<br/>");
+					document.write("<hr/>");
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
