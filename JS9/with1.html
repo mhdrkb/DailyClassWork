@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+			<script>
+                var teamJ="";
+				var teamMember=0;
+				Team: for (var teamNo=1; teamNo<3; teamNo++){
+					Jersey: for(var JerseyNo=20; JerseyNo<35; JerseyNo++){
+						if(JerseyNo==22||JerseyNo==25||JerseyNo==30){
+							continue Jersey;
+							}
+						if(teamMember==12){
+							teamMember=0;
+							}
+						teamMember++;
+						teamJ += "Team " + teamNo + " Member " + teamMember + " Jersey Number " + JerseyNo + "<br/>";
+						}
+					}
+					document.write(teamJ);
+            </script>
+    </body>
+</html>

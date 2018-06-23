@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+			<script>
+                function reallyMethod(){
+					window.document.write("I'm really a method....!");
+					}
+				window.reallyMethod();
+				window.document.write("<hr/>");
+				
+				function shedWalls(front,side){
+					var front=prompt("how many feet across the front ?","");
+					var side=prompt("how many feet along the side ?","");
+					var numFront=(front*12*2)/8;
+					var numSide=(side*12*2)/8;
+					var total = numFront+numSide;
+					var message = "You will need " + total + " one by 8-inch board for your shed walls";
+					document.write(message);
+					}
+				shedWalls();
+            </script>
+    </body>
+</html>
