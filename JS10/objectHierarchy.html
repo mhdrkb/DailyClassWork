@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+        <script>
+        	function doIt(){
+				window.document.petstore.puppy.value="Swissy";
+				window.document.petstore.clicker.value="I\'ve been clicked";
+				}
+        </script>
+    </head>
+
+    <body onLoad="javascript:window.document.petstore.reset()">
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+            	<h2>Object Hierarchy practise</h2>
+                <span>Click the Button:</span>
+                <form name="petstore">
+                	<input type="text" name="puppy">
+                    <input type="button" name="clicker" value="Click to change value of text window" onClick="doIt()">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
