@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.css"/>
+        <link type="text/css" rel="stylesheet" href="css/winProp.css"/>
+        
+    </head>
+
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+            	<script>
+					var cupUp = new Image();
+					cupUp.src = "images/cupUp.jpg";
+					var cupDown = new Image();
+					cupDown.src = "images/cupDown.jpg";
+					var alpha;
+					var beta;
+					function interval(){
+						alpha = window.setInterval("document.cup.src = cupDown.src", 2000);
+						}
+					function timeOut(){
+						beta = window.setTimeout("document.cup.src = cupUp.src", 2000);
+						window.clearInterval(alpha);
+						}
+					
+					
+				</script>
+                <table cellpadding="0" cellspacing="0" border="1" width="100%" align="center">
+                    <tr valign="middle">
+                        <td align="center">
+                        	<img name="cup"  src="images/cupUp.jpg" alt="java" width="350" height="300"/>
+                            <p>
+                            <a href="#" onClick="interval()">Interval</a> &nbsp;&nbsp;&nbsp;
+                            <a href="#" onClick="timeOut()">Time Out</a> 
+                            
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
