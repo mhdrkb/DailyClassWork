@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>String and its property</title>
+    
+</head>
+<body>
+	<script>
+		 var myWord = new String("It is Impolite to wink 'is' to polite");
+		 <!--myWord = myWord.fontsize(7).italics().fontcolor("red").blink().bold() + "<br/>";-->
+		 document.write(myWord + "<br/>");
+		 document.write("String length : " + myWord.length + "<br/>");
+		 document.write("Index if a word is : " + myWord.indexOf("is") + "<br/>");
+		 document.write("Index if a word 'is' : " + myWord.indexOf("\'is\'") + "<br/>");
+		 
+		 document.write("Index if a word z : " + myWord.indexOf("z") + "<br/>");
+		
+		 document.write("Index if a word m : " + myWord.indexOf("m") + "<br/>");
+		 
+		 document.write("Index if a word to : " + myWord.indexOf("to") + "<br/>");
+		 document.write("Index if a word to : " + myWord.indexOf("to",16) + "<br/>");
+		 
+		 document.write("Search Index of to : " + myWord.search("to") + "<br/>"); //search object can not take any parameter but indexOf() can.
+		 
+		 document.write("Last Index of Impolite : " + myWord.lastIndexOf("Impolite") + "<br/>");
+		 
+		 document.write("Slice :  " + myWord.slice(5,18) + "<br/>");//slicing from left side
+		 document.write("Slice :  " + myWord.slice(-10,-3) + "<br/>");//slicing from right side
+		 document.write("Slice :  " + myWord.slice(9) + "<br/>");//slicing from a single index from left side
+		 
+		 document.write("substring :  " + myWord.substring(7,13) + "<br/>");//works as like slice but can take negative parameter
+		 document.write("substr :  " + myWord.substr(7,13) + "<br/>");//first parameter used to ommit inedx and the second parameter used to how much digit i wil take.
+		 document.write("substr :  " + myWord.substr(7) + "<br/>");//one parameter used to ommit inedx and the rest will shown.
+		 
+		 document.write("substr :  " + myWord.replace("wink","Mehedee") + "<br/>");//first word will replace with 2nd word.
+		 document.write("substr :  " + myWord.replace("wink","Rakib") + "<br/>");
+		 document.write("substr :  " + myWord.replace(/WINK/i,"Hasan") + "<br/>");//for case insensitive, ig we use a regular expression "g" it will change the word as much as the word found other wise it will change only first match found
+		 document.write("substr :  " + myWord.replace("WINK","Hridoy") + "<br/>");//it is case sensitive
+		 
+		 document.write("substr :  " + myWord.concat(" ","Hridoy is a good boy") + "<br/>");
+		 myWord = myWord.fontsize(7).italics().fontcolor("red").blink().bold();
+		 document.write(myWord + "<br/>");
+    </script>
+</body>
+</html>

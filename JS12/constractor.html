@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Constructing method</title>
+    
+</head>
+<body>
+	<script>
+		 var name ="";
+		 var shop ="";
+		 var product ="";
+		 function mall(name, shop , product){
+			 this.name = name;
+			 this.shop = shop;
+			 this.product = product;
+			 }
+		var a = new mall("Blomy","Nuts and Lighting Bolts", "Organic Electricity");
+		var display = a.name + "<br/>";
+		display += a.shop + "<br/>";
+		display += a.product;
+		document.write(display);
+    </script>
+</body>
+</html>

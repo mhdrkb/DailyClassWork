@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>Window Control</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    </head>
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+            	<script>
+				function GetStanWin(){
+                	var win;
+					win = window.open("sampWin.html","sampWin","height = 200 , width = 400");
+				}
+				function moveRel(){
+					moveBy(200,300);
+					}
+				function moveAbs(){
+					moveTo(100,200);
+					}
+				function shrink(){
+					resizeBy(400,600);
+					}
+				function shrivel(){
+					resizeTo(1000,500);
+					}
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
