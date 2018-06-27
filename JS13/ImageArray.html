@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Array</title>
+    
+</head>
+<body>
+	<script>
+		function changeIt(){
+			var c = new Image();
+			var n = document.forms[0].hue.value;
+			n = parseInt(n);
+			c.src="images/index.jpg";
+			document.images[n].src = c.src;
+			}
+    </script>
+    <table width="100%" height="100" border="1" align="center" cellpadding="0" cellspacing="0">
+    	<tr>
+        	<td>
+            	<img name="c1" src="images/banner1.jpg" border="0" height="100" width="200"/>
+            </td>
+            <td >
+            	<img name="c2" src="images/banner2.jpg" border="0" height="100" width="200"/>
+            </td>
+            <td >
+            	<img name="c3" src="images/banner3.jpg" border="0" height="100" width="200"/>
+            </td>
+            <td >
+            	<img name="c4" src="images/banner4.jpg" border="0" height="100" width="200"/>
+            </td>
+            <td >
+            	<img name="c5" src="images/banner5.jpg" border="0" height="100" width="200"/>
+            </td>
+            <td >
+            	<img name="c6" src="images/banner6.jpg" border="0" height="100" width="200"/>
+            </td>
+            <td >
+            	<img name="c7" src="images/banner7.jpg" border="0" height="100" width="200"/>
+            </td>
+        </tr>
+    </table>
+    <center>
+        <form>
+            <input type="text" name="hue"><br/>
+            <input type="button" value="Click to change the color of the image" onClick="changeIt()"/>
+        </form>
+    </center>
+</body>
+</html>

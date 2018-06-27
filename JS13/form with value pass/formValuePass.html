@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>Form</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+		
+    </head>
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+            	<form name="myForm">
+                	<label>ID: </label>
+                    <input type="text" name="ID" value="1243859"/><br/><br/>
+                    
+                    <label>Name: </label>
+                    <input type="text" name="name" value="Mehedee"/><br/><br/>
+                    
+                    <button type="submit" onClick="display()">Send</button> &nbsp;&nbsp; <input type="reset" name="reset" value="Reset"/>
+                </form>
+                <script>
+					function display(){
+						var ID = document.forms['myForm']['ID'].value;
+						document.getElementById('demoID').innerHTML=ID;
+						
+						var name = document.forms['myForm']['name'].value;
+						document.getElementById('demoName').innerHTML=name;
+					}
+           </script>
+                <p id="demoID"></p><br/>
+                <p id="demoName"></p><br/>
+            </div>
+        </div>
+    </body>
+</html>

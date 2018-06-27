@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dynamic Color Change</title>
+    
+</head>
+<body>
+	<script>
+		function message(hue){
+			document.forms[0].elements[5].value=hue;
+			}
+    </script>
+    <h2>Big Font</h2>
+    <p>This is dynamic color practise</p>
+    <h1>Mehedee hasan</h1>
+    <form>
+    	<input type="button" value="Red" onClick="document.bgColor='red'" onMouseDown="message('red')">
+        <input type="button" value="Green" onClick="document.bgColor='green'" onMouseOver="message('green')">
+        <input type="button" value="Blue" onClick="document.bgColor='blue'" onMouseMove="message('blue')"><br/>
+        <input type="button" value="Font Color to Yellow" onClick="document.fgColor='yellow'"><br/>
+        <input type="button" value="Font Color to FireBrick" onClick="document.fgColor='firebrick'">
+        <input type="text">
+    </form>
+</body>
+</html>
