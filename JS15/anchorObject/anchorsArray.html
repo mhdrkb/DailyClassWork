@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Anchors and Hashes</title>
+    
+</head>
+<body onLoad="countAnchors()">
+	<h2>Top level <a name="top"></a></h2>
+    
+    <a href="#" onMouseDown="goAnchors('one')">one</a> <br/><br/><br/><br/><br/><br/>
+    <a href="#" onMouseOut="goAnchors('two')">two</a><br/><br/><br/><br/><br/><br/>
+    <a href="#" onMouseMove="goAnchors('three')">three</a><br/><br/><br/><br/><br/><br/>
+    <a href="#" onMouseOver="goAnchors('four')">four</a><br/><br/><br/><br/><br/><br/>
+    
+    
+    <h3>level one <a name="one"></a></h3><br/><br/><br/><br/><br/><br/>
+    <h3>level two <a name="two"></a></h3><br/><br/><br/><br/><br/><br/>
+    <h3>level three <a name="three"></a></h3><br/><br/><br/><br/><br/><br/>
+    <a href="#" onMouseUp="goAnchors('top')">top</a><br/><br/><br/><br/><br/><br/>
+    <h3>level four <a name="four"></a></h3><br/><br/><br/><br/><br/><br/>
+	<script>
+    	
+		function countAnchors(){
+			alert("This script has " + document.anchors.length + " anchors.");
+			}
+		function goAnchors(anchName){
+			location.hash = anchName;
+			}
+    </script>
+</body>
+
+</html>

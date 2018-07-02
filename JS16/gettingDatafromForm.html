@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Text Box Math</title>
+</head>
+
+<body>
+	<h2>Enter two number an press the sum button:</h2>
+    <form name="calc">
+    	<input type="text" name="aOne">
+        <input type="text" name="aTwo">
+        <input type="button" value="Sum" onClick="addEnUp()"/><br/><br/>
+    </form>
+
+	<script>
+    
+    var n;
+    
+    function addEnUp(){
+        var add = document.calc.aOne.value + document.calc.aTwo.value;
+		alert(add);
+	}
+   
+    </script>
+
+</body>
+
+</html>

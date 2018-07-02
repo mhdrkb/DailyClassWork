@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>variableForm</title>
+</head>
+
+<body>
+    <form name="stateBird">
+    	<input type="text" name="state">:State Name <br/><br/>
+        <input type="text" name="bird">:Name of State Bird <br><br/>
+        <input type="button" value="Bird Button" onClick="putBird();"/><br/><br/>
+    </form>
+
+	<script>
+    
+    function putBird(){
+        var state = "New Maxico";
+		document.stateBird.state.value = state;
+		var bird = "Roadrunner";
+		document.stateBird.bird.value = bird;
+		alert("The state bird of " + state + " is the " + bird);
+	}
+   
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Key Events</title>
+    
+</head>
+<body>
+	<h2>Click on the text link or button or text window.<br/> then press any key</h2>
+    
+    <a href="#" onKeyUp="alert('This is on key up message')">onKeyUp</a><br/><br/><br/><br/>
+    
+    
+    <form>
+    	<input type="button" value="onKeyPress" onKeyPress="alert('This is onKeyPress event message')"/><br/><br/><br/><br/>
+        <input type="text" onKeyDown="fillIn()" size="100"/>
+    </form>
+	<script>
+    	
+		
+		function fillIn(){
+			document.forms[0].elements[1].value = "This is onKeyDown event message...!!!";
+			}
+    </script>
+</body>
+</body>
+</html>

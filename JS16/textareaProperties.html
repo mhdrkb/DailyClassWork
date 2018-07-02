@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Text Box</title>
+</head>
+
+<body>
+	<h2>Daily Memo</h2>
+    <form name="memo">
+    	<textarea cols="40" rows="8" name="today"></textarea>
+        <input type="button" onClick="setUp();" value="See Message"/>
+    </form>
+
+	<script>
+    
+    function setUp(){
+        var ta = new Object();
+		ta = document.memo.today;
+		ta.value = "The connection has timed out.\nThe server at www.lipsum.com is taking too long to respond.\n\nSigned.\nThe Boss."
+	}
+   
+    </script>
+     <script language="javascript"> 
+	 function x() { 
+	 var qpt = "First come, first served";
+	  var pattern = /first/g; 
+	  document.write(qpt.match(pattern)[0]); 
+	  } 
+	  x();
+      </script> 
+      
+      <script language="javascript"> 
+	  function xy() { 
+	  var qpt = "QualityPointTechnologies"; 
+	  var pattern = /Point/; 
+ 
+	var output= qpt.search(pattern); 
+ 
+	document.write("Position: " + output);
+	 } 
+	 xy();
+    </script> 
+ 
+
+</body>
+
+</html>
