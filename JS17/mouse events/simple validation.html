@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Simple Validation</title>
+</head>
+
+<body>
+<form  name="folks" onSubmit="return CheckItOut(this)">
+<input type="text" name="info"/>
+<input type="submit" value="Click to valid and submit"/>
+</form>
+
+<script>
+	function CheckItOut(form){
+		var yourName =document.folks.info.value;
+		if(yourName==""){
+			alert("You know your name, don\'t you?\n So type it in!");
+			return false;
+			}else{
+			alert("Thanks, " + yourName + " for sending your name.");
+			return true;
+			}
+		
+		}
+</script>
+</body>
+</html>
