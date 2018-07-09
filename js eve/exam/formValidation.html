@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Form Validation</title>
+</head>
+
+<body>
+<form name="myForm" onSubmit="return validForm();">
+	User Name: <input type="text" name="username" value=""/> <br/><br/>
+    Full Name: <input type="text" name="fullname" value=""/> <br/><br/>
+    Age: <input type="number" name="age" value=""/><br/><br/>
+    Password: <input  type="password" name="Password" value=""/> <br/><br/>
+    Re-type Password: <input type="password" name="RePassword" value=""/> <br/><br/>
+    Gender: <input type="radio" name="Gender" value="Male"/> Male
+    		<input type="radio" name="Gender" value="Female"/> Female <br/><br/>
+    Language: <select name="Language">
+    			<option>English</option>
+                <option>Bangla</option>
+                <option>Chinese</option>
+                <option>Japanese</option>
+                <option>Arabic</option>
+    		  </select> <br/><br/>
+    Hobby: <input type="checkbox" name="Hobby" value="Singing">Singing
+    		<input type="checkbox" name="Hobby" value="Swimming">Swimming
+            <input type="checkbox" name="Hobby" value="Playing">Playing
+    		<input type="checkbox" name="Hobby" value="WatchingTV">WatchingTV  <br/><br/>
+    Comment: <textarea></textarea> <br/><br/>
+    
+    		<input type="submit" value="Submit"/>
+            <input type="reset" value="Reset"/>
+            
+</form>
+<script>
+function validForm(){
+	var x = document.forms["myForm"]["username"].value;
+	if(x==""){
+		alert("Username must be filled out.");
+		return false;
+		}
+	var y = document.forms["myForm"]["fullname"].value;
+	if(y==""){
+		alert("Full Name must be filled out.");
+		return false;
+		}
+	var z = document.forms["myForm"]["age"].value;
+	if(z<18 || z>70){
+		alert("Age must be between 18 to 70");
+		return false;
+		}
+	var password = document.forms["myForm"]["Password"].value;
+	if(password){
+		return true;
+		}else{
+			alert("Password Must contain at least an Uppercase, a lowercase, a special character and a number. and minimmum 8 digit");
+			return false;
+			}
+	}
+
+</script>
+</body>
+</html>

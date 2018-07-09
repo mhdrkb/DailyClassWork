@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body onLoad="range(2,100)">
+<script>
+	function prime(num){
+		var n = Math.sqrt(num);
+		for(var i = 2 ; i<=n  ; i++){
+			if(n%2==0){
+			return false;
+			}
+		}
+		return true;
+		}
+	function range(start,end){
+		for(start; start<=end; start++){
+			if(prime(start)){
+				document.write(start + " " + "Is prime," + "<br/>");
+				}
+			}
+		}
+</script>
+</body>
+</html>

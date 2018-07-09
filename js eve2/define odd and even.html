@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body onLoad="range(1,100)">
+<script>
+function even(num){
+	if(num%2==0){
+		return true;
+		}
+		return false;
+	}
+function range(start,end){
+	for(start; start<=end ; start++){
+		if(even(start)){
+			document.write(start + " even number" + "<br/>");
+			}else{
+				document.write(start + " " + "odd number" + "<br/>");
+				}
+		}
+	}
+</script>
+
+</body>
+</html>

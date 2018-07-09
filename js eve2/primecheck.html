@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script>
+var number= prompt("Enter Number: ");
+function primecheck(n){
+	var num = Math.sqrt(n);
+	for(var i = 2; i<=num ; i++){
+	if(n%i==0){
+		return false;
+		}
+	}
+	return true;
+	}
+if(primecheck(number)){
+	document.write(number + " is a prime number.");
+	}else{
+		document.write(number + " is not a prime number.");
+		}
+</script>
+</body>
+</html>

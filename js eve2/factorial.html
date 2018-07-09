@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script>
+ var n = prompt("Enter a number: ");
+ function fact(num){
+	 if(num==0){
+		 return 1;
+		 }
+	 return num*fact(num-1);
+	 }
+ alert("The factorial of the number " + n + " is: " + fact(n));
+</script>
+</body>
+</html>
