@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Calculate Factorial</title>
+</head>
+
+<body>
+
+
+
+<script>
+	function fact(n){
+		var n;
+		if(n==0){
+			return 1;
+			}else{
+				return n*fact(n-1);
+				}
+		}
+	var number =  prompt("Enter a number","");
+	alert("The factorial of the number: " + number + " is" + fact(number));
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Prime number between a range</title>
+</head>
+
+<body onLoad="checknumber(2,100)">
+
+<script>
+function primenum(n){
+	var num = Math.sqrt(n);
+	for (var i=2 ; i<=num ; i++){
+		if(n%i == 0)
+		return false;
+	}
+		return true;
+	}
+function checknumber(start,end){
+	for(start; start<=end; start++){
+		if(primenum(start)){
+			document.write(start + " " + "is a prime" + "<br/>");
+			}else{
+				document.write(start + " " + "is not a prime" + "<br/>");
+				}
+		}
+	}
+</script>
+</body>
+</html>

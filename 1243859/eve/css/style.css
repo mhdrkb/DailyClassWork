@@ -1,0 +1,45 @@
+.fullContainer{
+	width: 100%;
+	background-color:#CCC;
+	}
+.container{
+	width: 1100px;
+	background-color:#FFC;
+	margin: 0 auto;
+	}
+.menu{
+	height: 80px;
+	width:100%;
+	background-color:#FC9;
+	}
+.menu ul{
+	list-style-type:none;
+	}
+.menu ul li{
+	float:left;
+	margin-left: 20px;
+	}
+.menu ul li a{
+	text-decoration:none;
+	}
+.nav{
+	height: 600px;
+	width:100%;
+	background-color:#CC9;
+	}
+.left{
+	height: 600px;
+	width:10%;
+	background-color:#99F;
+	}
+/*.left ul{
+	list-style-type:none;
+	}
+.left ul li a{
+	text-decoration:none;
+	}*/
+.right{
+	height: 600px;
+	width:90%;
+	background-color:#99F;
+	}

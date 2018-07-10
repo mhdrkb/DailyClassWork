@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>formArray</title>
+</head>
+
+<body>
+	<h2 align="center">Enter the Information</h2>
+    <form name="myForm" action="displayPage.html">
+    	<table cellpadding="0" cellspacing="0" align="center" border="0" height="600" width="500" align="center">
+        	<tr >
+            	<td>First Name</td>
+                <td>:</td>
+                <td> <input name="fName" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>:</td>
+                <td> <input name="lName" type="text" /></td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>:</td>
+                <td> <input name="id" type="number" /></td>
+            </tr>
+            <tr>
+                <td>Set User Name</td>
+                <td>:</td>
+                <td> <input name="uname" type="text" /></td>
+            </tr>
+            <tr>
+            	<td>Email</td>
+                <td>:</td>
+                <td> <input name="email" type="email" /></td>
+            </tr>
+            <tr>
+            	<td>Password</td>
+                <td>:</td>
+                <td> <input name="pssword" type="password" /></td>
+            </tr>
+            <tr>
+            	<td>Re-Password</td>
+                <td>:</td>
+                <td> <input name="repassword" type="password" /></td>
+            </tr>
+            <tr>
+            	<td>Gender</td>
+                <td>:</td>
+                <td> <input name="gender" type="radio" value="male"/>Male <input name="gender" type="radio" value="female"/>Female</td>
+            </tr>
+            <tr>
+            	<td>DOB</td>
+                <td>:</td>
+                <td> <input name="dob" type="date"/></td>
+            </tr>
+            <tr>
+            	<td>Education</td>
+                <td>:</td>
+                <td> <input name="education" type="checkbox"/> SSC
+                	 <input name="education" type="checkbox"/> HSC
+                     <input name="education" type="checkbox"/> Hon's
+                     <input name="education" type="checkbox"/> Masters
+                </td>
+            </tr>
+            <tr>
+            	<td>Round</td>
+                <td>:</td>
+                <td><select>
+                		<option>Select a Round</option>
+                        <option>Round-30</option>
+                        <option>Round-31</option>
+                        <option>Round-32</option>
+                        <option>Round-33</option>
+                        <option>Round-34</option>
+                        <option>Round-35</option>
+                        <option>Round-36</option>
+                        <option>Round-37</option>
+                        <option>Round-38</option>
+                        <option>Round-39</option>
+                        <option>Round-40</option>
+                	</select>
+                </td>
+            </tr>
+            <tr>
+            	<td>Address</td>
+                <td>:</td>
+                <td><textarea></textarea></td>
+            </tr>
+            <tr>
+                 <td>City</td>
+                 <td>:</td>
+                 <td> <input name="city" type="text" /></td>
+            </tr>
+            <tr>
+                 <td>State</td>
+                 <td>:</td>
+                 <td> <input name="state" type="text" /></td>
+            </tr>
+            <tr>
+                 <td>Zip Code</td>
+                 <td>:</td>
+                 <td> <input name="zip" type="text" /></td>
+            </tr>
+            <tr>
+                 <td>Add your CV</td>
+                 <td>:</td>
+                 <td> <input name="cv" type="file"  /></td>
+            </tr>
+        </table>
+    </form>
+    <form>
+    	<input type="button" value="Transfer Array" onClick="sendEm()"/><br/>
+        <textarea rows="8" cols="80" name="gather"></textarea>
+    </form>
+
+	<script>
+    
+    function sendEm(){
+        var newDisplay = "";
+		var myFormLength = document.myForm.length;
+		
+		for(var counter = 0 ; counter < myFormLength ; counter++){
+			newDisplay += document.forms[0].elements[counter].value + "\n";
+			}
+		document.forms[1].elements[1].value = newDisplay;
+	}
+   
+    </script>
+
+</body>
+
+</html>

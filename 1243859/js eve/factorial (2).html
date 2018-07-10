@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>factorial</title></head>
+<body>
+<script>
+var n;
+function fact(n){
+	if(n==0){
+		return 1;
+		}else{
+			return n*fact(n-1);
+			}
+	}
+var number = prompt("Enter a integer Number :"," ");
+document.write("The factorial of your number " + number + " is= " + fact(number));
+</script>
+</body>
+</html>

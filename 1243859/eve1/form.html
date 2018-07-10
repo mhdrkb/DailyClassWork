@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form</title>
+</head>
+<body>
+	<!--<table cellpadding="0" cellspacing="0" height="400" width="600" align="center">
+    	<tr>
+        	<td>
+            	<form>
+                    User Name:			<input type="text" name="uname" value="mhdrkb" required/> <br/><br/>
+                    Full Name:			<input type="text" name="fname" value="Mehedee"/> <br/><br/>
+                    Password:			<input type="password" name="password" required/> <br/><br/>
+                    Re-type Password:	<input type="password" name="repassword" required/> <br/><br/>
+                    Gender:				<input type="radio" name="gender"/>Male <input type="radio" name="gender"/>Female <br/><br/>
+                    Language:			<select>
+                                            <option>English</option>
+                                            <option>Bangla</option>
+                                            <option>Arabic</option>
+                                            <option>Japanese</option>
+                                        </select> <span>Select a Language</span><br/><br/>
+                    Comment:			<textarea></textarea> <br/><br/>
+                                        <input type="reset" value="Reset"/> &nbsp; &nbsp; &nbsp; <input type="submit" value="Submit"/>
+                </form>
+            </td>
+        </tr>
+    </table>-->
+    
+    
+    <table cellpadding="0" cellspacing="5" height="200" width="600" align="center">
+    	<tr>
+        	<td width="30%">User Name:</td>
+            <td width="80%">
+            	<form name="myForm" action="dispaly.html">
+                	<input type="text" name="uname" value="" width="100%">
+                </form>
+            </td>
+        </tr>
+        <tr>
+        	<td width="30%">Full Name:</td>
+            <td width="80%">
+            	<form name="myForm" action="dispaly.html">
+                	<input type="text" name="fname" value=""/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+        	<td width="30%">Password:</td>
+            <td width="80%">
+            	<form name="myForm" action="dispaly.html">
+                	<input type="password" name="password" required/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+        	<td width="30%">Re-type Password:</td>
+            <td width="80%">
+            	<form name="myForm" action="dispaly.html">
+                	<input type="password" name="repassword" required/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+        	<td width="30%">Gender:</td>
+            <td width="80%">
+            	<form name="myForm" action="dispaly.html">
+                	<input type="radio" name="gender"/>Male <input type="radio" name="gender"/>Female
+                </form>
+            </td>
+        </tr>
+        <tr>
+        	<td width="30%">Language:</td>
+            <td width="80%">
+            	<form name="myForm" action="dispaly.html">
+                	<select>
+                        <option>English</option>
+                        <option>Bangla</option>
+                        <option>Arabic</option>
+                        <option>Japanese</option>
+                    </select>
+                </form>
+            </td>
+        </tr>
+        <tr>
+        	<td width="30%">Comment:</td>
+            <td width="80%"><form name="myForm" action="dispaly.html"><textarea></textarea></form></td>
+        </tr>
+        <tr>
+        	<td width="30%"></td>
+        	<td width="80%">
+            	<form name="myForm" action="dispaly.html">
+                	<input type="reset" value="Reset"/> &nbsp; &nbsp; &nbsp; <input type="submit" value="Submit" onSubmit="getFormData()"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+		<script>
+			function getFormData(){
+				var value1 ="value1";
+				var value2 ="value2";
+				var value3 ="value3";
+				var value4 ="value4";
+				var value5 ="value5";
+				var value6 ="value6";
+				var value7 ="value7";
+				
+				var queryString = "?para1= " + value1 + "&para2= " + value2 + "&para3= " + value3 + "&para4= " + value4 + "&para5= " + value5 + "&para6= " + value6 + "&para7= " + value7;
+				window.location.href = "display.html" + queryString;
+			}
+		</script>
+</body>
+</html>

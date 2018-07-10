@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>Form</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        
+    </head>
+    <body>
+    	<div class="container-fluid bg-gold">
+        	<div class="container bg-warning">
+            	<form name="myForm" action="form.html">
+                	<label>ID: </label>
+                    <input type="text" name="ID" value=""/><br/><br/>
+                    
+                    <label>Name: </label>
+                    <input type="text" name="Name" value=""><br/><br/>
+                    
+                    <input type="submit" onSubmit="sendFormData()" value="Send"/>
+                </form>
+            </div>
+        </div>
+        <script>
+			function sendFormData(){
+				var value1 = "value1";
+				var value2 = "value2";
+				var query = "&para1= " + value1 + "&para2= " + value2;
+				window.location.href = "form.html" + query;
+				}
+			var query = decodeURIComponent(window.location.search);
+				query = query.substring(1);
+				var queries = query.split("&")
+				for(var i=0; i<queries.length; i++){
+					document.write(queries[i] + "<br/>");
+					}
+		</script>
+    </body>
+</html>
