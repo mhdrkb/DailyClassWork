@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<script>
+function fact(n){
+	if(n==0){
+		return 1;
+		}
+		return n*fact(n-1);
+	}
+var number;
+number = prompt("Enter a number:");
+alert("The fasctorial of the number " + number + " is: " + fact(number));
+</script>
+</body>
+</html>
