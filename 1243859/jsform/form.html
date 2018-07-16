@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+label{
+	color: #900;
+	padding-left: 10px;
+	}
+
+</style>
+</head>
+
+<body>
+
+<form name="myForm" action="form.html" onSubmit="return validForm()" method="post">
+Name: <input type="text"  name="name"/><label id="fname"></label> <br/>
+
+Gender: <input type="radio" name="gender" value="Male"> Male
+		<input type="radio" name="gender" value="Female">Female <label id="gender"></label> <br/>
+        
+Education:<input type="checkbox" name="ssc" value="SSC"/>SSC
+			<input type="checkbox" name="hsc" value="HSC"/>HSC
+            <input type="checkbox" name="hons" value="Hon's"/>Hon's<label id="edu"></label> <br/>
+Round:<select name="roundd">
+			<option value="Select A Round" selected="selected">Select A Round</option>
+            <option value="Round-30">Round-30</option>
+            <option value="Round-31">Round-31</option>
+            <option value="Round-32">Round-32</option>
+            <option value="Round-33">Round-33</option>
+		</select>
+        <label id="roundd"></label><br/>
+Comment:<textarea name="comment" placeholder="At least 10 characters"></textarea><label id="comment"></label><br/><br/>
+
+            
+		<input type="submit" value="Submit"/><input type="reset" value="Reset"/>
+</form>
+
+<script>
+function validForm(){
+	var name = document.forms["myForm"]["name"].value;
+	var gender = document.forms["myForm"]["gender"].value;
+	
+	
+	var education = "";
+	var ssc = document.forms["myForm"]["ssc"].value;
+	var hsc = document.forms["myForm"]["hsc"].value;
+	var hons = document.forms["myForm"]["hons"].value;
+	if(document.forms["myForm"].ssc.checked){
+		education += document.forms["myForm"]["ssc"].value + ", ";
+		}
+	if(document.forms["myForm"].hsc.checked){
+		education += document.forms["myForm"]["hsc"].value + ", ";
+		}
+	if(document.forms["myForm"].hons.checked){
+		education += document.forms["myForm"]["hons"].value;
+		}
+	
+	var roundd = document.forms["myForm"]["roundd"].value;
+	var msg = document.forms["myForm"]["comment"].value;
+	
+	////////########### Name VAlidation ##########//////
+	if(name==""){
+		document.getElementById('fname').innerHTML = "Name must be filled out.";
+		return false;
+		}
+		else if(name.length<5){
+			document.getElementById('fname').innerHTML = "Name must have at least 5 characters";
+			return false;
+		}
+		////////########### Gender VAlidation ##########//////
+		else if(gender==""){
+			document.getElementById('gender').innerHTML = "Tell me who you are?";
+			return false;
+		}
+		////////########### Education VAlidation ##########//////
+		else if(!document.forms["myForm"].ssc.checked && !document.forms["myForm"].hsc.checked && !document.forms["myForm"].hons.checked){
+			document.getElementById('edu').innerHTML = "Please check at least one.!";
+			return false;
+		}
+		////////########### Round Validation ##########//////
+		else if(roundd == "Select A Round" ){
+			document.getElementById('roundd').innerHTML = "Please select a Round!";
+			return false;
+		}
+		else if(msg.length<10){
+			document.getElementById('comment').innerHTML = "Please write at least 10 characters about yourself.";
+			return false;
+		}
+		else{
+			document.write("Name: " + name + "<br/>");
+			document.write("Gender: " + gender + "<br/>");
+			document.write("Education: " + education + "<br/>" );
+			document.write("Round: " + roundd + "<br/>" );
+			document.write("Comments: " + msg + "<br/>" );
+		}
+	}
+</script>
+</body>
+</html>
