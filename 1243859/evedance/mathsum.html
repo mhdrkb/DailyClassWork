@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script>
+function getSum(sn,en){
+	sum =0;
+	if(sn<en){
+		for(i=sn; i<=en ; i++){
+			sum += i;
+			}
+		
+		}
+	else{
+		for(i=sn; i>=en ; i--){
+			sum += i;
+			}
+		}
+	document.write("Series sum result of " + sn + " to " + en + " is: " + sum);
+	}
+getSum(parseInt(prompt("Enter Start number")),parseInt(prompt("Enter End number")));
+</script>
+</body>
+</html>

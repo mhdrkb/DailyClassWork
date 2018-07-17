@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script>
+var str; //global varriable
+function myfunction(){
+	str = "mehedee"; //local varriable
+	document.write(str + "<br/>");
+	}
+document.write(str + "<br/>");
+myfunction()
+
+function newfunction(){
+	
+	a=5; //global variable though they are in a function cause they don't declare with var keyword.
+	b=10; //global varriable though they are in a function cause they don't declare with var keyword.
+	}
+
+newfunction();
+document.write(a+b);
+</script>
+</body>
+</html>

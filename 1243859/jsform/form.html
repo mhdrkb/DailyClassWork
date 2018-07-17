@@ -17,8 +17,15 @@ label{
 <form name="myForm" action="form.html" onSubmit="return validForm()" method="post">
 Name: <input type="text"  name="name"/><label id="fname"></label> <br/>
 
+Username:<input type="text" name="uname"/><label id="uname"></label><br/>
+
+Password:<input type="password" name="pass"/><label id="pass"></label><br/>
+
+Re-type Password: <input type="password" name="repass"/><label id="repass"></label><br/>
+
 Gender: <input type="radio" name="gender" value="Male"> Male
 		<input type="radio" name="gender" value="Female">Female <label id="gender"></label> <br/>
+
         
 Education:<input type="checkbox" name="ssc" value="SSC"/>SSC
 			<input type="checkbox" name="hsc" value="HSC"/>HSC
@@ -40,6 +47,9 @@ Comment:<textarea name="comment" placeholder="At least 10 characters"></textarea
 <script>
 function validForm(){
 	var name = document.forms["myForm"]["name"].value;
+	var uname = document.forms["myForm"]["uname"].value;
+	var pass = document.forms["myForm"]["pass"].value;
+	var repass = document.forms["myForm"]["repass"].value;
 	var gender = document.forms["myForm"]["gender"].value;
 	
 	
@@ -60,6 +70,11 @@ function validForm(){
 	var roundd = document.forms["myForm"]["roundd"].value;
 	var msg = document.forms["myForm"]["comment"].value;
 	
+	//Reg Exp
+	
+	var regName = /^\w+$/;
+	
+	var regPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 	////////########### Name VAlidation ##########//////
 	if(name==""){
 		document.getElementById('fname').innerHTML = "Name must be filled out.";
@@ -67,6 +82,33 @@ function validForm(){
 		}
 		else if(name.length<5){
 			document.getElementById('fname').innerHTML = "Name must have at least 5 characters";
+			return false;
+		}
+		////////########### User Name VAlidation ##########//////
+		else if(uname==""){
+			document.getElementById('uname').innerHTML = "User Name must be filled out";
+			return false;
+		}
+		else if(!regName.test(uname)){
+			document.getElementById('uname').innerHTML = "Username must contain only  letters, numbers and underscores!";
+			return false;
+		}
+		////////########### Password VAlidation ##########//////
+		else if(pass==""){
+			document.getElementById('pass').innerHTML = "Password must be filled out";
+			return false;
+		}
+		else if(!regPass.test(pass)){
+			document.getElementById('pass').innerHTML = "Password must contain at least 6 characters, including UPPER lowercase and numbers.";
+			return false;
+		}
+		else if(pass == uname){
+			document.getElementById('pass').innerHTML = "Password must be different from Username!";
+			return false;
+		}
+		////////########### Re Password VAlidation ##########//////
+		else if(repass != pass){
+			document.getElementById('repass').innerHTML = "Password doesn't match";
 			return false;
 		}
 		////////########### Gender VAlidation ##########//////
@@ -90,6 +132,9 @@ function validForm(){
 		}
 		else{
 			document.write("Name: " + name + "<br/>");
+			document.write("Username: " + uname + "<br/>");
+			document.write("Password: " + pass + "<br/>");
+			document.write("RePassword: " + repass + "<br/>");
 			document.write("Gender: " + gender + "<br/>");
 			document.write("Education: " + education + "<br/>" );
 			document.write("Round: " + roundd + "<br/>" );
