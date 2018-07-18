@@ -75,7 +75,7 @@ function validForm(){
 	var regName = /^\w+$/;
 	
 	var regPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-	////////########### Name VAlidation ##########//////
+//Name VAlidation ##########//////
 	if(name==""){
 		document.getElementById('fname').innerHTML = "Name must be filled out.";
 		return false;
@@ -84,7 +84,7 @@ function validForm(){
 			document.getElementById('fname').innerHTML = "Name must have at least 5 characters";
 			return false;
 		}
-		////////########### User Name VAlidation ##########//////
+//User Name VAlidation ##########//////
 		else if(uname==""){
 			document.getElementById('uname').innerHTML = "User Name must be filled out";
 			return false;
@@ -93,7 +93,7 @@ function validForm(){
 			document.getElementById('uname').innerHTML = "Username must contain only  letters, numbers and underscores!";
 			return false;
 		}
-		////////########### Password VAlidation ##########//////
+//Password VAlidation ##########//////
 		else if(pass==""){
 			document.getElementById('pass').innerHTML = "Password must be filled out";
 			return false;
@@ -106,26 +106,27 @@ function validForm(){
 			document.getElementById('pass').innerHTML = "Password must be different from Username!";
 			return false;
 		}
-		////////########### Re Password VAlidation ##########//////
+//Re Password VAlidation ##########//////
 		else if(repass != pass){
 			document.getElementById('repass').innerHTML = "Password doesn't match";
 			return false;
 		}
-		////////########### Gender VAlidation ##########//////
+//Gender VAlidation ##########//////
 		else if(gender==""){
 			document.getElementById('gender').innerHTML = "Tell me who you are?";
 			return false;
 		}
-		////////########### Education VAlidation ##########//////
+//Education VAlidation ##########//////
 		else if(!document.forms["myForm"].ssc.checked && !document.forms["myForm"].hsc.checked && !document.forms["myForm"].hons.checked){
 			document.getElementById('edu').innerHTML = "Please check at least one.!";
 			return false;
 		}
-		////////########### Round Validation ##########//////
+//Round Validation ##########//////
 		else if(roundd == "Select A Round" ){
 			document.getElementById('roundd').innerHTML = "Please select a Round!";
 			return false;
 		}
+//Textara Validation ##########//////
 		else if(msg.length<10){
 			document.getElementById('comment').innerHTML = "Please write at least 10 characters about yourself.";
 			return false;
