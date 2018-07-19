@@ -74,7 +74,9 @@ function validForm(){
 	
 	var regName = /^\w+$/;
 	
-	var regPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+	var regPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^_&*])[\w!@#$%^_&*].{8,}$/;
+	
+	
 //Name VAlidation ##########//////
 	if(name==""){
 		document.getElementById('fname').innerHTML = "Name must be filled out.";
@@ -99,7 +101,7 @@ function validForm(){
 			return false;
 		}
 		else if(!regPass.test(pass)){
-			document.getElementById('pass').innerHTML = "Password must contain at least 6 characters, including UPPER lowercase and numbers.";
+			document.getElementById('pass').innerHTML = "Password must contain at least 8 characters, including a Uppercase and a Lowercase characters , numbers and special characters.";
 			return false;
 		}
 		else if(pass == uname){

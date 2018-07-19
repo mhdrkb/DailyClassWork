@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script>
+var x =parseInt(prompt("Enter number "));
+function fact(a){
+	
+	if(a==0){
+		return 1;
+		}
+	else{
+		return a*fact(a-1);
+		}
+	
+	}
+document.write("The fatorial value of the number " + x + " is " + fact(x) + "<br/>");
+document.write("The value of " + x + "!" + " is= " + fact(x));
+</script>
+</body>
+</html>
