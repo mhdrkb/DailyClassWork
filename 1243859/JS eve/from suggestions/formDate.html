@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form name="myForm" action="formDate.html" method="post" onSubmit="return show()">
+	<input type="date" name="date" />
+    <input type="submit" value="Submit">
+</form>
+<script>
+function show(){
+	var x = document.forms["myForm"]["date"].value;
+
+	document.write("The date is " + x + "<br/>");
+	
+	var y = new Date(x);
+	
+	document.write("The day of the date " + x + "is =" + y.getDay());
+	}
+</script>
+</body>
+</html>

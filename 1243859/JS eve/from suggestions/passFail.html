@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script>
+var x=parseInt(prompt("Enter MCQ mark"));
+var y=parseInt(prompt("Enter Descriptive mark"));
+var z=parseInt(prompt("Enter Eevidence mark"));
+check(x,y,z);
+function check(a,b,c){
+	if((a>100 || a<0) || (b>100 || b<0) || (c>100 || c<0)){
+		document.write("Invalid Entry.");
+		return false;
+		}
+	else if(a<80 || b<60 || c<60){
+		document.write("Student Failed");
+		return false;
+		}
+	else{
+		document.write("Student passed having " + "<br/>" + a +" in MCQ" + "<br/>" + b +" in Descriptive and " + "<br/>" + c +" in Evidence" + "<br/>" + "The Total number is: " + (a+b+c));
+		}
+	}
+</script>
+</body>
+</html>

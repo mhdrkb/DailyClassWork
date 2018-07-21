@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<form name="myForm" onSubmit="return searchString()">
+
+Enter a string: <input type="text" name="string"/><br/><br/>
+Search here: <input type="search" name="query"/><br/><br/>
+
+			<input type="submit" value="Submit"/>
+</form>
+
+<script>
+function searchString(){
+	var x = document.forms["myForm"]["string"].value;
+	var y = document.forms["myForm"]["query"].value;
+	}
+</script>
+</body>
+</html>
