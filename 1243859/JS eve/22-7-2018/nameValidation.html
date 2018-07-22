@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+label{
+	color:#900;
+	padding-left: 10px;
+	}
+</style>
+</head>
+
+<body>
+
+<form name="myForm">
+	 Enter Full Name:<input type="text" name="name"/><label id="name"></label><br/><br/>
+     Enter Username:<input type="text" name="uname"/><label id="uname"></label><br/><br/>
+     Enter Password:<input type="password" name="pass"/><label id="pass"></label><br/><br/>
+     Re-Enter Password:<input type="password" name="repass"/><label id="repass"></label><br/><br/>
+     Gender:<input type="radio" name="gender" value="Male"/>Male
+     		<input type="radio" name="gender" value="Female"/>Female<label id="gender"></label><br/><br/>
+     Round: <select name="roundd">
+     			<option selected="selected" value="Select A Round">Select A Round</option>
+                <option value="Round-30">Round-30</option>
+                <option value="Round-31">Round-31</option>
+                <option value="Round-32">Round-32</option>
+                <option value="Round-33">Round-33</option>
+                <option value="Round-34">Round-34</option>
+                <option value="Round-35">Round-35</option>
+                <option value="Round-36">Round-36</option>
+                <option value="Round-37">Round-37</option>
+                <option value="Round-38">Round-38</option>
+                <option value="Round-39">Round-39</option>
+                <option value="Round-40">Round-40</option>
+     		</select>								<label id="roundd"></label><br/><br/>
+     Education:<input type="checkbox" name="ssc" value="SSC">SSC
+     			<input type="checkbox" name="hsc" value="HSC">HSC
+                <input type="checkbox" name="bsc" value="BSc">BSc <label id="edu"></label><br/><br/>
+     Bio:<textarea cols="30" rows="3" placeholder="Add a discription about yourself(Maximum 100 characters)" name="bio"></textarea> <label id="bio"></label><br/><br/>
+                
+                
+     <input type="reset" value="Reset"/>
+</form>
+
+<button onClick="validate()">Submit</button>
+<button onClick="closeWindow()">Close</button>
+
+<script>
+var win;
+function closeWindow(){
+	win.close();
+	}
+
+function validate(){
+	
+	var name = document.forms["myForm"]["name"].value;
+	var uname = document.forms["myForm"]["uname"].value;
+	var pass = document.forms["myForm"]["pass"].value;
+	var repass = document.forms["myForm"]["repass"].value;
+	var regUname = /^\w+$/;
+	var regPass=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^_&*])[\w!@#$%^_&*].{6,}$/;
+	
+	var gender = document.forms["myForm"]["gender"].value;
+	var roundd = document.forms["myForm"]["roundd"].value;
+	
+	
+	var education = ""
+	var ssc = document.forms["myForm"]["ssc"].value;
+	var hsc = document.forms["myForm"]["hsc"].value;
+	var bsc = document.forms["myForm"]["bsc"].value;
+	if(document.forms["myForm"].ssc.checked){
+		education +=  ssc + ",";
+		}
+	if(document.forms["myForm"].hsc.checked){
+		education +=  hsc + ",";
+		}
+	if(document.forms["myForm"].bsc.checked){
+		education +=  bsc;
+		}
+		
+		
+		
+	var bio = document.forms["myForm"]["bio"].value;
+		
+/////name validation
+	if (name == ""){
+		document.getElementById('name').innerHTML = "Name must be filled out";
+		return false;
+		}
+	else if(name.length<5){
+		document.getElementById('name').innerHTML = "Name must be at least 5 characters";
+		return false;
+		}
+	else{
+		document.getElementById('name').innerHTML = "";
+		}
+////username validation
+	if(uname == ""){
+		document.getElementById('uname').innerHTML = "Username must be filled out";
+		return false;
+		}
+	else if(uname.length<5){
+		document.getElementById('uname').innerHTML = "Username must be at least 5 characters";
+		return false;
+		}
+	else if(!regUname.test(uname)){
+		document.getElementById('uname').innerHTML = "Username can contain uppercase or lowercase letters, numbers and underscore";
+		return false;
+		}
+	else{
+		document.getElementById('uname').innerHTML = "";
+		}
+///password validation
+	if(pass==""){
+		document.getElementById('pass').innerHTML = "Please give a password";
+		return false;
+		}
+	else if(!regPass.test(pass)){
+		document.getElementById('pass').innerHTML = "Password must contain an uppercase letter, a lowercase letter, a digit, a special character like ! @ # $ % ^ _ & * etc and at least 6 characters";
+		return false;
+		}
+	else{
+		document.getElementById('pass').innerHTML = "";
+		}
+//Retyped password validation
+	if(repass!=pass){
+		document.getElementById('repass').innerHTML = "Password does not match";
+		return false;
+		}
+	else{
+		document.getElementById('repass').innerHTML = "";
+		}
+//gender  validation
+	if(gender==""){
+		document.getElementById('gender').innerHTML = "Please select your gender";
+		return false;
+		}		
+	else{
+		document.getElementById('gender').innerHTML = "";
+		}
+//Round  validation
+	if(roundd=="Select A Round"){
+		document.getElementById('roundd').innerHTML = "Please select your Round";
+		return false;
+		}		
+	else{
+		document.getElementById('roundd').innerHTML = "";
+		}
+//Education  validation	
+	if(!document.forms["myForm"].ssc.checked && !document.forms["myForm"].hsc.checked && !document.forms["myForm"].bsc.checked){
+		document.getElementById('edu').innerHTML = "Please select at least one";
+		return false;
+		}
+	else{
+		document.getElementById('edu').innerHTML = "";
+		}
+//Bio  validation
+	if(bio.length<20){
+		document.getElementById('bio').innerHTML = "Between 20 to 100 characters";
+		return false;
+		}	
+	if(bio.length>100){
+		document.getElementById('bio').innerHTML = "Between 20 to 100 characters";
+		return false;
+		}
+	else{
+		document.getElementById('bio').innerHTML = "";
+		win = window.open("","","width=500px");
+		win.document.write("<h2> Form data </h2><hr>");
+		win.document.write("Student Name: " + name + "<br/>");
+		win.document.write("User Name: " + uname  + "<br/>");
+		win.document.write("Password: " + pass + "<br/>");
+		win.document.write("Gender: " + gender + "<br/>");
+		win.document.write("Round: " + roundd + "<br/>");
+		win.document.write("Education: " + education + "<br/>");
+		win.document.write("Student Bio: " + bio + "<br/>");
+		}	
+	}
+</script>
+
+</body>
+</html>

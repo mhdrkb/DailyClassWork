@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+label{
+	color:#900;
+	padding-left: 10px;
+	}
+</style>
+</head>
+
+<body>
+    <form name="myForm">
+    	Enter DOB: <input type="date" name="dob"/>  <label id="dob"></label><br/><br/>
+     	
+    </form>
+    <button onClick="age()">Click Here</button>
+
+    <script type="text/javascript">
+    	function age(){
+			var x = document.forms["myForm"]["dob"].value;
+			var y = new Date(x);
+			var z = new Date();
+			
+			var age = z-y;
+			
+			document.getElementById("dob").innerHTML = "Your Age is " + age + " miliseconds";
+			
+			
+			
+			}
+    </script>
+</body>
+</html>
