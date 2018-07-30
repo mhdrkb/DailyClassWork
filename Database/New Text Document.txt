@@ -1,0 +1,7 @@
+create table teacher(t_id number(2) primary key, t_name varchar2(100) not null, salary number(7,2) check(salary>50000), mobile number(11) unique, joining_date date default sysdate);
+
+-------------------------
+create table student(id number(2) primary key, name varchar2(100) not null, Educational_Q varchar2(100) not null, District varchar2(100) unique, teacher_id number(2), constraint teacher_name foreign key(teacher_id) references teacher(t_id));
+
+---------------------------
+create or replace view teacher_name as select name from student;
