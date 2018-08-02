@@ -1,0 +1,186 @@
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> create user eid identified by eid;
+User created.
+SQL> grant dba to eid;
+Grant succeeded.
+SQL> conn
+Enter user-name: eid
+Enter password:
+Connected.
+
+
+SQL> create table departments(dep_id number(5) primary key, department_name varchar2(50) not null);
+Table created.
+SQL> create table employees(emp_id number(5) primary key, emp_name varchar2(50) not null, mobile number(11) unique,
+	salary number(7,2) check(salary>10000), joining_date date default sysdate, country varchar2(50) default 'BD',
+	dep_id number(5) not null, constraint dep_id_cons foreign key(dep_id) references departments(dep_id));
+Table created.
+SQL> desc departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEP_ID                                    NOT NULL NUMBER(5)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(50)
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(5)
+ EMP_NAME                                  NOT NULL VARCHAR2(50)
+ MOBILE                                             NUMBER(11)
+ SALARY                                             NUMBER(7,2)
+ JOINING_DATE                                       DATE
+ COUNTRY                                            VARCHAR2(50)
+ DEP_ID                                    NOT NULL NUMBER(5)
+
+
+SQL> show autocommit;
+autocommit OFF
+SQL> set autocommit on;
+
+
+SQL> create sequence dep_id_seq increment by 10 start with 001 maxvalue 200 nocycle nocache;
+Sequence created.
+SQL> create sequence emp_id_seq increment by 5 start with 001 maxvalue 200 nocycle nocache;
+Sequence created.
+SQL> select sequence_name from user_sequences;
+SEQUENCE_NAME
+------------------------------
+DEP_ID_SEQ
+EMP_ID_SEQ
+
+SQL> select index_name from user_indexes;
+INDEX_NAME
+------------------------------
+SYS_C007027
+SYS_C007028
+SYS_C007023
+SQL> create index dep_name_ix on departments(department_name);
+Index created.
+SQL> select index_name from user_indexes;
+INDEX_NAME
+------------------------------
+SYS_C007027
+SYS_C007028
+SYS_C007023
+DEP_NAME_IX
+
+
+
+SQL> insert into departments(dep_id,department_name) values (dep_id_seq.nextval,'ADMIN');
+SQL> insert into departments(dep_id,department_name) values (dep_id_seq.nextval,'SOFTWARE');
+SQL> insert into departments(dep_id,department_name) values (dep_id_seq.nextval,'MARKETING');
+
+
+SQL> create or replace view dep_view as select dep_id,department_name from departments where  department_name='MARKETING';
+View created.
+SQL> select view_name from user_views;
+VIEW_NAME
+------------------------------
+DEP_VIEW
+
+
+SQL> create synonym d_info for departments;
+Synonym created.
+SQL> create synonym d_view_info for dep_view;
+Synonym created.
+
+
+SQL> select * from d_info;
+    DEP_ID DEPARTMENT_NAME
+---------- --------------------------------------------------
+         1 ADMIN
+        11 SOFTWARE
+        21 MARKETING
+
+SQL> select * from dep_view;
+    DEP_ID DEPARTMENT_NAME
+---------- --------------------------------------------------
+        21 MARKETING
+
+SQL> select * from d_view_info;
+    DEP_ID DEPARTMENT_NAME
+---------- --------------------------------------------------
+        21 MARKETING
+
+
+
+SQL> select index_name from user_indexes;
+INDEX_NAME
+------------------------------
+SYS_C007027
+SYS_C007028
+SYS_C007023
+DEP_NAME_IX
+SQL> create index emp_name_ix on employees(emp_name);
+Index created.
+SQL> select sequence_name from user_sequences;
+SEQUENCE_NAME
+------------------------------
+DEP_ID_SEQ
+EMP_ID_SEQ
+
+
+
+SQL> insert into employees(emp_id,emp_name,mobile,salary,dep_id) values (emp_id_seq.nextval,'mhd',01731430177,20000,1);
+SQL> insert into employees(emp_id,emp_name,mobile,salary,dep_id) values (emp_id_seq.nextval,'rkb',01731498177,18000,11);
+SQL> insert into employees(emp_id,emp_name,mobile,salary,dep_id) values (emp_id_seq.nextval,'hsn',01767498177,15000,21);
+SQL> insert into employees(emp_id,emp_name,mobile,salary,dep_id) values (emp_id_seq.nextval,'hrd',01767490177,18000,11);
+SQL> insert into employees(emp_id,emp_name,mobile,salary,dep_id) values (emp_id_seq.nextval,'sbj',01767412017,14000,21);
+
+SQL> create or replace view emp_view as select emp_id,emp_name from employees where  salary=18000;
+View created.
+SQL> select view_name from user_views;
+VIEW_NAME
+------------------------------
+DEP_VIEW
+EMP_VIEW
+
+SQL> select * from emp_view;
+    EMP_ID EMP_NAME
+---------- --------------------------------------------------
+         6 rkb
+        16 hrd
+
+
+SQL> select * from e_info
+    EMP_ID    EMP_NAME         MOBILE               SALARY          JOINING_D          COUNTRY          DEP_ID
+----------     -----------     ------------------   --------------  ----------------   --------------   ------
+         1     mhd             173143017            20000           02-AUG-18          BD               1
+
+         6     rkb             1731498177           18000           02-AUG-18          BD               11
+
+        11     hsn             1767498177           15000           02-AUG-18          BD               21
+
+        16     hrd             1767490177           18000           02-AUG-18          BD               11
+
+        21     sbj             1767412017           14000           02-AUG-18          BD               21
+
+
+SQL> select * from e_view_info;
+    EMP_ID EMP_NAME
+---------- --------------------------------------------------
+         6 rkb
+        16 hrd
+
+
+
+SQL> update departments set department_name='SALES' where dep_id=21;
+1 row updated.
+SQL> alter table employees add email varchar2(50) unique;
+Table altered.
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(5)
+ EMP_NAME                                  NOT NULL VARCHAR2(50)
+ MOBILE                                             NUMBER(11)
+ SALARY                                             NUMBER(7,2)
+ JOINING_DATE                                       DATE
+ COUNTRY                                            VARCHAR2(50)
+ DEP_ID                                    NOT NULL NUMBER(5)
+ EMAIL                                              VARCHAR2(50)
+
+
+SQL> update employees set dep_id=21 where emp_id=1;

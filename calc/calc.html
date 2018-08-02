@@ -3,39 +3,53 @@
 <head>
 <meta charset="utf-8">
 <title>Untitled Document</title>
+<style>
+button{
+	height: 100%;
+	width: 100%;
+	}
+</style>
 </head>
 
 <body>
-<form>
+<form name="myForm">
 <table border="1" width="100" height="200">
 	<tr>
-    	<td colspan="4">display</td>
+    	<td colspan="4" height="30px"><label id="numbers"></label></td>
     </tr>
 	<tr align="center">
-    	<td>7</td>
-        <td>8</td>
-        <td>9</td>
-        <td>+</td>
+    	<td><button name="seven" value="7">7</button></td>
+        <td><button name="eight" value="8">8</button></td>
+        <td><button name="nine" value="9">9</button></td>
+        <td><button name="plus" value="+">+</button></td>
     </tr>
     <tr align="center">
-    	<td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>-</td>
+    	<td><button name="four" value="4">4</button></td>
+        <td><button name="five" value="5">5</button></td>
+        <td><button name="six" value="6">6</button></td>
+        <td><button name="minus" value="-">-</button></td>
     </tr>
     <tr align="center">
-    	<td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>*</td>
+    	<td><input type="submit" value="1" name="one" onClick="return one()"/></td>
+        <td><button name="two" value="2">2</button></td>
+        <td><button name="three" value="3">3</button></td>
+        <td><button name="multiply" value="*">*</button></td>
     </tr>
     <tr align="center">
-    	<td>ac</td>
-        <td>.</td>
-        <td>=</td>
-        <td>/</td>
+    	<td><button name="ac" value="ac">AC</button></td>
+        <td><button name="dot" value=".">.</button></td>
+        <td><button name="equal" value="=">=</button></td>
+        <td><button name="division" value="/">/</button></td>
     </tr>
 </table>
 </form>
+<script>
+function one(){
+	var one = document.forms["muForms"]["one"].value;
+	document.getElementById('numbers').innerHTML = one;
+	document.write(one);
+	}
+
+</script>
 </body>
 </html>

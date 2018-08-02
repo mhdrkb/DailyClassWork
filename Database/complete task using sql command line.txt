@@ -1,0 +1,86 @@
+
+SQL> connect sys as sysdba
+Enter password:
+Connected.
+SQL> create user russia identified by russia;
+
+User created.
+
+SQL> grant dba to russia;
+
+Grant succeeded.
+
+SQL> conn
+Enter user-name: russia
+Enter password:
+Connected.
+
+SQL> show autocommit;
+autocommit OFF
+
+SQL> set autocommit on;
+
+
+SQL> create table departments(id number(5) primary key, name varchar2(100) not null);
+Table created.
+
+SQL> create table employees (id number(5) primary key, name varchar2(100) not null, salary number(7,2) check(salary<5000), mobile number(11) unique);
+Table created.
+
+SQL> create sequence dep_id increment by 10 start with 50 maxvalue 100 nocache nocycle;
+Sequence created.
+
+SQL> create sequence emp_id increment by 5 start with 1 maxvalue 200 nocache nocycle;
+Sequence created.
+
+SQL> insert into departments(id,name) values (dep_id.nextval,'HR');
+1 row created.
+Commit complete.
+
+SQL> insert into departments(id,name) values (dep_id.nextval,'Accounts');
+1 row created.
+Commit complete.
+
+SQL> insert into departments(id,name) values (dep_id.nextval,'Sales');
+1 row created.
+Commit complete.
+
+SQL> insert into departments(id,name) values (dep_id.nextval,'Marketing');
+1 row created.
+Commit complete.
+
+SQL> insert into departments(id,name) values (dep_id.nextval,'Administration');
+1 row created.
+Commit complete.
+
+SQL> insert into employees(id,name,salary,mobile) values (emp_id.nextval,'Rahim',4500,01731430177);
+1 row created.
+Commit complete.
+
+SQL> insert into employees(id,name,salary,mobile) values (emp_id.nextval,'Karim',4000,01516193111);
+1 row created.
+Commit complete.
+
+SQL> insert into employees(id,name,salary,mobile) values (emp_id.nextval,'Karim',3500,01915605412);
+1 row created.
+Commit complete.
+
+SQL> insert into employees(id,name,salary,mobile) values (emp_id.nextval,'jobbar',3500,01915895412);
+1 row created.
+Commit complete.
+
+SQL> alter sequence emp_id increment by 5 maxvalue 200 nocache nocycle;
+
+truncate table EMPLOYEES;
+
+SQL> select table_name from user_tables;
+
+SQL> create index dep_name_indx on departments(department_name);
+
+SQL> select index_name from user_indexes;
+
+SQL> create synonym emp for employees;
+
+Synonym created.
+
+SQL> select employee_id from emp;

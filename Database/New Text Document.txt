@@ -5,3 +5,12 @@ create table student(id number(2) primary key, name varchar2(100) not null, Educ
 
 ---------------------------
 create or replace view teacher_name as select name from student;
+
+----------
+select table-name from user_tables;
+
+-------------------
+select view_name from user_views;
+
+-----------------
+selecet sequence_name from user_sequences;
