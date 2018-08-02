@@ -1,0 +1,26 @@
+SQL> create table mhd(id number(5) primary key, name varchar2(50));
+
+Table created.
+
+SQL> desc mhd;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(5)
+ NAME                                               VARCHAR2(50)
+
+SQL> insert into mhd(id,name) values (01,'mehedee');
+
+1 row created.
+
+Commit complete.
+SQL> insert into mhd(id,name) values (02,'hasan');
+
+1 row created.
+
+Commit complete.
+SQL> insert into mhd(id,name) values (03,'rakib');
+
+1 row created.
+
+Commit complete.
+SQL> spool off;

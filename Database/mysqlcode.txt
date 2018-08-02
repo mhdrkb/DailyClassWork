@@ -1,0 +1,11 @@
+SQL> insert into hihi(id,name) values (04,'hasan');
+
+1 row created.
+
+Commit complete.
+SQL> insert into hihi(id,name) values (05,'rkb');
+
+1 row created.
+
+Commit complete.
+SQL> spool off;\
