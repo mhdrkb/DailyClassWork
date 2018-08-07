@@ -1,0 +1,60 @@
+SQL> connect sys as sysdba
+Enter password:
+Connected.
+SQL> grant select on abc.mhd to abc1 with grant option;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: abc1
+Enter password:
+Connected.
+
+
+SQL> select * from abc.mhd;
+
+no rows selected
+
+
+SQL> connect sys as sysdba
+Connected.
+SQL> grant insert on abc.mhd to abc1 with grant option;
+
+Grant succeeded.
+
+SQL> conn
+Enter user-name: abc1
+Connected.
+SQL> select * from abc.mhd;
+
+no rows selected
+
+SQL> insert into abc.mhd(id,name) values (02,'mehedee');
+
+1 row created.
+
+SQL> insert into abc.mhd(id,name) values (01,'hasan');
+
+1 row created.
+
+SQL> insert into abc.mhd(id,name) values (03,'rakib');
+
+1 row created.
+
+SQL> select * from abc.mhd;
+
+        ID                                                                      
+----------                                                                      
+NAME                                                                            
+--------------------------------------------------------------------------------
+         2                                                                      
+mehedee                                                                         
+                                                                                
+         1                                                                      
+hasan                                                                           
+                                                                                
+         3                                                                      
+rakib                                                                           
+                                                                                
+
+SQL> spool off;

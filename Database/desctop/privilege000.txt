@@ -1,0 +1,93 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Aug 7 09:21:46 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect sys as sysdba
+Enter password:
+Connected.
+SQL> create user xyz identified by xyz;
+
+User created.
+
+SQL> conn
+Enter user-name: xyz
+Enter password:
+ERROR:
+ORA-01045: user XYZ lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> grant create session to xyz;
+SP2-0640: Not connected
+SQL> connect sys as sysdba
+Enter password:
+Connected.
+SQL> grant create session to xyz;
+
+Grant succeeded.
+
+SQL> conn
+Enter user-name: xyz
+Enter password:
+Connected.
+SQL> create table test(id number(5) primary key,name varchar2(15));
+create table test(id number(5) primary key,name varchar2(15))
+*
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> show autocommit;
+autocommit OFF
+SQL> set autocommit on;
+SQL> grant create table to xyz;
+grant create table to xyz
+*
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> connect sys as sysdba
+Enter password:
+Connected.
+SQL> grant table to xyz;
+grant table to xyz
+      *
+ERROR at line 1:
+ORA-01919: role 'TABLE' does not exist
+
+
+SQL> grant create table to xyz;
+
+Grant succeeded.
+
+SQL> create table test(id number(5) primary key,name varchar2(15));
+
+Table created.
+
+SQL> select * from test;
+
+no rows selected
+
+SQL> insert into test(id,name) values (1,'mhd');
+
+1 row created.
+
+Commit complete.
+SQL> select * from test;
+
+        ID NAME
+---------- ---------------
+         1 mhd
+
+SQL> update test set name='mehedee' where id=1;
+
+1 row updated.
+
+Commit complete.
+
+
+
+
+============ user <- role <- privilege

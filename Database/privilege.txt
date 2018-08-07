@@ -1,0 +1,91 @@
+SQL> connect sys as sysdba;
+Connected.
+SQL> create user abc identified by abc;
+
+User created.
+
+SQL> create user abc1 identified by abc1;
+
+User created.
+
+SQL> create role manger ;
+
+Role created.
+
+SQL> grant create table, create view, create session to manger;
+
+Grant succeeded.
+
+SQL> alter user abc quota 500m on system;
+
+User altered.
+
+SQL> alter user abc1 quota 500m on system;
+
+User altered.
+
+SQL> conn
+Enter user-name: abc
+ERROR:
+ORA-01045: user ABC lacks CREATE SESSION privilege; logon denied 
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> grant manger to to abc;
+SP2-0640: Not connected
+SQL> connect sys as sysdba;
+Connected.
+SQL> grant manger to to abc;
+grant manger to to abc
+                *
+ERROR at line 1:
+ORA-00987: missing or invalid username(s) 
+
+
+SQL> grant manger to abc;
+
+Grant succeeded.
+
+SQL> grant manger to abc1;
+
+Grant succeeded.
+
+SQL> conn
+Enter user-name: abc
+Connected.
+SQL> create table mhd(id number(10) primary key, name varchar(100));
+
+Table created.
+
+SQL> create view mhd_view select * from mhd;
+create view mhd_view select * from mhd
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> create view mhd_view as select * from mhd;
+
+View created.
+
+SQL> select * from mhd_view;
+
+no rows selected
+
+SQL> connect sys as sysdba;
+Connected.
+SQL> revoke create view from manger;
+
+Revoke succeeded.
+
+SQL> conn
+Enter user-name: abc
+Connected.
+SQL> create view test_view as select id from mhd;
+create view test_view as select id from mhd
+            *
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+SQL> spool off;
