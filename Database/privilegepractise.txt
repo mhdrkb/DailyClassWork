@@ -1,0 +1,94 @@
+SQL> connect sy as sysdba;
+Connected.
+SQL> create user user1 identified by user1;
+
+User created.
+
+SQL> create user user2 identified vy user2;
+create user user2 identified vy user2
+                             *
+ERROR at line 1:
+ORA-00924: missing BY keyword 
+
+
+SQL> create user user2 identified by user2;
+
+User created.
+
+SQL> create role info;
+
+Role created.
+
+SQL> grant create table, create view,, create session to info;
+grant create table, create view,, create session to info
+                                *
+ERROR at line 1:
+ORA-00990: missing or invalid privilege 
+
+
+SQL> grant create table, create view, create session to info;
+
+Grant succeeded.
+
+SQL> alter user user1 quota 500m on system
+  2  
+SQL> alter user user1 quota 500m on system;
+
+User altered.
+
+SQL> alter user user2 quota 500m on system;
+
+User altered.
+
+SQL> grant info to user1;
+
+Grant succeeded.
+
+SQL> grant info to user2;
+
+Grant succeeded.
+
+SQL> conn
+Enter user-name: user2
+Connected.
+SQL> create table student(id number(10) primary key, name varchar2(50));
+
+Table created.
+
+SQL> insert into student(id,name) values (01,'Mehedee');
+
+1 row created.
+
+SQL> select*from student;
+
+        ID NAME                                                                 
+---------- --------------------------------------------------                   
+         1 Mehedee                                                              
+
+SQL> connect sys as sysdba;
+Connected.
+SQL> grant select,insert on user2.student to user1 with grant option;
+
+Grant succeeded.
+
+SQL> conn
+Enter user-name: user1
+Connected.
+SQL> select * from user2.student;
+
+        ID NAME                                                                 
+---------- --------------------------------------------------                   
+         1 Mehedee                                                              
+
+SQL> insert into user2.student (id,name) values (02,'hasan');
+
+1 row created.
+
+SQL> select * from user2.student;
+
+        ID NAME                                                                 
+---------- --------------------------------------------------                   
+         1 Mehedee                                                              
+         2 hasan                                                                
+
+SQL> spool off;
