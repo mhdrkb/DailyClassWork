@@ -1,0 +1,176 @@
+SQL> alter table mhd set unused(country);
+
+Table altered.
+
+SQL> desc mhd;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(200)
+ AGE                                                NUMBER(2)
+ EMAIL                                              VARCHAR2(50)
+ PHONE                                              NUMBER(11)
+
+SQL> alter table mhd drop unused columns;
+
+Table altered.
+
+SQL> desc mhd;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(200)
+ AGE                                                NUMBER(2)
+ EMAIL                                              VARCHAR2(50)
+ PHONE                                              NUMBER(11)
+
+SQL> create table abc(id number(3),name varchar2(20));
+
+Table created.
+
+SQL> alter table abc;
+alter table abc
+              *
+ERROR at line 1:
+ORA-02210: no options specified for ALTER TABLE 
+
+
+SQL> alter table abc modify id primary key;
+
+Table altered.
+
+SQL> alter table abc modify name not null;
+
+Table altered.
+
+SQL> alter table abc add (mhd_id number(10));
+
+Table altered.
+
+SQL> alter table abc add constraint mhd_id_abc foreign key(mhd_id) references abc(id);
+
+Table altered.
+
+SQL> desc abc;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(3)
+ NAME                                      NOT NULL VARCHAR2(20)
+ MHD_ID                                             NUMBER(10)
+
+SQL> create table dept(id number(30 primary key, dep_name varchar2(30);)
+  2  
+SQL> create table dept(id number(30 primary key, dep_name varchar2(30));
+create table dept(id number(30 primary key, dep_name varchar2(30))
+                               *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table dept(id number(30) primary key, dep_name varchar2(30));
+
+Table created.
+
+SQL> create table emp(emp_id number)
+  2  
+SQL> 
+SQL> create table dept (dep_id number(2) primary key, dep_name varchar2(20));
+create table dept (dep_id number(2) primary key, dep_name varchar2(20))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table dep(dep_id number(2) primary key, dep_name varchar2(20));
+
+Table created.
+
+SQL> create table emp(emp_id number(2) primary key, emp_name varchar2(20), dep_id number(2));
+
+Table created.
+
+SQL> alter table emp add constraint emp_dep_fk foreign key(dep_id) references dep on delete cascade;
+
+Table altered.
+
+SQL> insert into dep(id,name) values(10,'Admin');
+insert into dep(id,name) values(10,'Admin')
+                   *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> insert into dep(dep_id,dep_name) values(10,'Admin');
+
+1 row created.
+
+SQL> insert into dep(dep_id,dep_name) values(20,'IT_Prog');
+
+1 row created.
+
+SQL> insert into dep(dep_id,dep_name) values(30,'Clark');
+
+1 row created.
+
+SQL> insert into emp(emp_id,emp_name,dep_id) values (01,'mhd',10);
+
+1 row created.
+
+SQL> insert into emp(emp_id,emp_name,dep_id) values (02,'rkb',20);
+
+1 row created.
+
+SQL> insert into emp(emp_id,emp_name,dep_id) values (03,'hsn',20);
+
+1 row created.
+
+SQL> insert into emp(emp_id,emp_name,dep_id) values (04,'hrdy',10);
+
+1 row created.
+
+SQL> insert into emp(emp_id,emp_name,dep_id) values (05,'tnvr',30);
+
+1 row created.
+
+SQL> insert into emp(emp_id,emp_name,dep_id) values (06,'sbj',20);
+
+1 row created.
+
+SQL> insert into emp(emp_id,emp_name,dep_id) values (07,'babu',30);
+
+1 row created.
+
+SQL> insert into emp(emp_id,emp_name,dep_id) values (08,'sayan',30);
+
+1 row created.
+
+SQL> select * from emp;
+
+    EMP_ID EMP_NAME                 DEP_ID                                      
+---------- -------------------- ----------                                      
+         1 mhd                          10                                      
+         2 rkb                          20                                      
+         3 hsn                          20                                      
+         4 hrdy                         10                                      
+         5 tnvr                         30                                      
+         6 sbj                          20                                      
+         7 babu                         30                                      
+         8 sayan                        30                                      
+
+8 rows selected.
+
+SQL> delete from dep where dep_id=30;
+
+1 row deleted.
+
+SQL> select * from emp;
+
+    EMP_ID EMP_NAME                 DEP_ID                                      
+---------- -------------------- ----------                                      
+         1 mhd                          10                                      
+         2 rkb                          20                                      
+         3 hsn                          20                                      
+         4 hrdy                         10                                      
+         6 sbj                          20                                      
+
+SQL> spool off;

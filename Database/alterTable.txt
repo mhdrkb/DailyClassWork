@@ -1,0 +1,147 @@
+SQL> conn
+Enter user-name: hr
+Connected.
+SQL> desc emlpoyees
+ERROR:
+ORA-04043: object emlpoyees does not exist 
+
+
+SQL> desc departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPARTMENT_ID                             NOT NULL NUMBER(4)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(30)
+ MANAGER_ID                                         NUMBER(6)
+ LOCATION_ID                                        NUMBER(4)
+
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEE_ID                               NOT NULL NUMBER(6)
+ FIRST_NAME                                         VARCHAR2(20)
+ LAST_NAME                                 NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                       VARCHAR2(20)
+ HIRE_DATE                                 NOT NULL DATE
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                                     NUMBER(2,2)
+ MANAGER_ID                                         NUMBER(6)
+ DEPARTMENT_ID                                      NUMBER(4)
+
+SQL> conn
+Enter user-name: abc
+Connected.
+SQL> select table_namne from user_tables;
+select table_namne from user_tables
+       *
+ERROR at line 1:
+ORA-00904: "TABLE_NAMNE": invalid identifier 
+
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+MHD                                                                             
+
+SQL> desc mhd
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(100)
+
+SQL> alter table mhd add (mobile number(11) not null);
+
+Table altered.
+
+SQL> desc mhd;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(100)
+ MOBILE                                    NOT NULL NUMBER(11)
+
+SQL> alter table mhd modify (name varchar2(200));
+
+Table altered.
+
+SQL> desc mhd;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(200)
+ MOBILE                                    NOT NULL NUMBER(11)
+
+SQL> alter table mhd drop mobile;
+alter table mhd drop mobile
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> alter table mhd drop column mobile;
+
+Table altered.
+
+SQL> desc mhd;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(200)
+
+SQL> alter table mhd add (age number(2) , email varchar2(50));
+
+Table altered.
+
+SQL> desc mhd;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(200)
+ AGE                                                NUMBER(2)
+ EMAIL                                              VARCHAR2(50)
+
+SQL> alter table mhd add (phone varchar2(11) unique);
+
+Table altered.
+
+SQL> alter table mhd modify (phone number(11) unique);
+alter table mhd modify (phone number(11) unique)
+                                         *
+ERROR at line 1:
+ORA-02261: such unique or primary key already exists in the table 
+
+
+SQL> alter table mhd modify (phone number(11));
+
+Table altered.
+
+SQL> desc mhd;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(200)
+ AGE                                                NUMBER(2)
+ EMAIL                                              VARCHAR2(50)
+ PHONE                                              NUMBER(11)
+
+SQL> alter table mhd add (country varchar2(50));
+
+Table altered.
+
+SQL> alter table mhd modify (country varchar2(50) default 'BD');
+
+Table altered.
+
+SQL> desc mhd;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(200)
+ AGE                                                NUMBER(2)
+ EMAIL                                              VARCHAR2(50)
+ PHONE                                              NUMBER(11)
+ COUNTRY                                            VARCHAR2(50)
+
+SQL> spool off;

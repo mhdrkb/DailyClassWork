@@ -1,0 +1,92 @@
+SQL> connect sys as sysdba;
+Connected.
+SQL>  select USERNAME, DEFAULT_TABLESPACE from DBA_USERS;
+
+USERNAME                       DEFAULT_TABLESPACE                               
+------------------------------ ------------------------------                   
+ABC                            SYSTEM                                           
+USA                            SYSTEM                                           
+XYZ2                           SYSTEM                                           
+XYZ3                           SYSTEM                                           
+XYZ                            SYSTEM                                           
+EID                            SYSTEM                                           
+ABC1                           SYSTEM                                           
+DAYONE                         SYSTEM                                           
+EID1                           SYSTEM                                           
+USER1                          SYSTEM                                           
+USER2                          SYSTEM                                           
+
+USERNAME                       DEFAULT_TABLESPACE                               
+------------------------------ ------------------------------                   
+RUSSIA                         SYSTEM                                           
+MEHEDEE                        SYSTEM                                           
+SYS                            SYSTEM                                           
+SYSTEM                         SYSTEM                                           
+ANONYMOUS                      SYSAUX                                           
+HR                             USERS                                            
+APEX_PUBLIC_USER               SYSTEM                                           
+FLOWS_FILES                    SYSAUX                                           
+APEX_040000                    SYSAUX                                           
+ORACLE_OCM                     SYSTEM                                           
+XS$NULL                        SYSTEM                                           
+
+USERNAME                       DEFAULT_TABLESPACE                               
+------------------------------ ------------------------------                   
+OUTLN                          SYSTEM                                           
+DIP                            SYSTEM                                           
+MDSYS                          SYSAUX                                           
+DBSNMP                         SYSAUX                                           
+APPQOSSYS                      SYSAUX                                           
+CTXSYS                         SYSAUX                                           
+XDB                            SYSAUX                                           
+
+29 rows selected.
+
+SQL> create user pqr identified by pqr;
+
+User created.
+
+SQL> grant dba to pqr;
+
+Grant succeeded.
+
+SQL> create table department(dep_id number(3) primary key, department_name varchar2(100));
+create table department(dep_id number(3) primary key, department_name varchar2(100))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table departments(dep_id number(3) primary key, department_name varchar2(100));
+
+Table created.
+
+SQL> show user
+USER is "SYS"
+SQL> drop table departments;
+
+Table dropped.
+
+SQL> conn\
+ERROR:
+ORA-01005: null password given; logon denied 
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> connect sys as sysdba
+Connected.
+SQL> conn
+Enter user-name: pqr
+Connected.
+SQL> create table departments(dep_id number(3) primary key, department_name varchar2(100));
+
+Table created.
+
+SQL> create table employe emp_id, emp_name, mobile unique, salary more than 10000,(dep_id number(3) primary key, department_name varchar2(100));
+create table employe emp_id, emp_name, mobile unique, salary more than 10000,(dep_id number(3) primary key, department_name varchar2(100))
+                     *
+ERROR at line 1:
+ORA-00922: missing or invalid option 
+
+
+SQL> 

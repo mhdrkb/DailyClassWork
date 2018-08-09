@@ -1,0 +1,2 @@
+https://blog.sqlauthority.com/2008/01/15/sql-server-what-is-dml-ddl-dcl-and-tcl-introduction-and-examples/
+https://www.cloudera.com/documentation/enterprise/5-2-x/topics/impala_dml.html
