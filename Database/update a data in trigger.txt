@@ -1,0 +1,23 @@
+normal update that can update only in main table bu not in back up table
+
+update employees set last_name='HASINA' where employee_id=101;
+
+
+i need to create a trigger to update any data in main table and back up table simulteniously;
+the trigger code wiil be like:
+
+
+create or replace trigger emp_after_update after update on employees 
+for each row
+declare 
+begin
+update employees_backup
+set last_name= :new.last_name, first_name= :new.first_name
+where
+employee_id= :old.employee_id;
+
+dbms_output.put_line('Record Successfully updated into employees_backup table');
+end;
+
+
+now update in main table and check in both table;
