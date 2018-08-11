@@ -1,0 +1,41 @@
+#################################
+1. Create a table using grant permission from sysdba
+	~~~~~~~~~~~~~~
+	create table employees as select * from hr.employees;(need to grant permission from dba to my user)
+
+
+2. Delete all data fromm the table
+	~~~~~~~~~~~~~~~
+	delete from employees;
+
+
+3. create a backup table as like as number 1 table using 'as' the table created before
+	~~~~~~~~~~~~
+	create table employees_backup as select * from employees;
+
+
+
+4.create trigger ;(note that you need to grant permission from dba to your user to create trigger)
+
+	~~~~~~~~~~~
+	create or replace trigger emp_after_insert after insert on employees
+	FOR EACH ROW
+
+	DECLARE
+	BEGIN
+
+	insert into employees_backup values(:new.employee_id,:new.FIRST_NAME,:new.LAST_NAME,:new.EMAIL,:new.PHONE_NUMBER,:new.HIRE_DATE,:new.JOB_ID,:new.SALARY,:new.COMMISSION_PCT,:new.MANAGER_ID,:new.DEPARTMENT_ID);
+   
+	DBMS_OUTPUT.PUT_LINE('Record successfully inserted intu employees_backup table');
+	END;
+
+
+5. insert data into number one table;
+	~~~~~~~~~~~~~~~~~~~~~~
+	insert into employees select * from hr.employees where employee_id=100;
+
+
+6. and check the inserted into the main table and the backup table;
+	~~~~~~~~~~~
+	select * from employees;
+	select * from employees_backup;
