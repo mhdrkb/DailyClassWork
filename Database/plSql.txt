@@ -1,0 +1,58 @@
+declare
+
+message varchar2(50) := 'This is Mehedee';
+x integer:= 70;
+y integer:= 60;
+
+
+msg1 varchar2(10):='Mehedee';
+msg2 varchar2(10):='Hasan';
+msg3 varchar2(50);
+begin
+
+dbms_output.put_line(message);
+dbms_output.put_line('This is new Programming language');
+
+dbms_output.put_line(x+y);
+dbms_output.put_line(x-y);
+dbms_output.put_line(x*y);
+dbms_output.put_line(x/y);
+
+dbms_output.put_line(msg1 || ' ' || msg2);
+
+msg3 := msg1 || ' ' || msg2;
+dbms_output.put_line(msg3);
+
+
+end;
+
+
+
+DECLARE
+/*this is plSql programming language.
+and this is a multi line comment.
+example for using Global variables.*/
+
+num1 number := 95;
+num2 number := 85;
+
+BEGIN
+
+dbms_output.put_line('Outer variable num1: ' || num1);
+dbms_output.put_line('Outer variable num2: ' || num2);
+
+DECLARE
+--local variables;
+num3 number := 195;
+num4 number := 185;
+
+BEGIN
+
+dbms_output.put_line('Inner variable num3: ' || num3);
+dbms_output.put_line('Inner variable num4: ' || num4);
+dbms_output.put_line('global variable num1: ' || num1);
+dbms_output.put_line('global variable num2: ' || num2);
+
+END;
+
+END;

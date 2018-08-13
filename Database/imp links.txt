@@ -1,0 +1,2 @@
+https://www.studytonight.com/dbms/truncate-drop-rename-query.php
+https://www.tutorialspoint.com/sql_certificate/using_ddl_statements.htm
