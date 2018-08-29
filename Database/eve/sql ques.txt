@@ -1,0 +1,3 @@
+1. create a user abcd
+2. create a table customer id(sequence),name(not null),mobile(unique),country(default=BD)
+3. create a trigger(with a back up table) for insert, update and delete.

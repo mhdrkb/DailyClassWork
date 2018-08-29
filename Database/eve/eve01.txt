@@ -1,0 +1,264 @@
+SQL> connect sys as sysdba
+Connected.
+SQL> create user abcd identified by abcd;
+
+User created.
+
+SQL> conn
+Enter user-name: abcd
+ERROR:
+ORA-01045: user ABCD lacks CREATE SESSION privilege; logon denied 
+Warning: You are no longer connected to ORACLE.
+
+SQL> connect sys as sysdba
+Connected.
+SQL> grant dba to abcd;
+
+Grant succeeded.
+
+SQL> conn
+Enter user-name: abcd
+Connected.
+SQL> show autocomit
+SP2-0158: unknown SHOW option "autocomit"
+SQL> show autocommit;
+autocommit OFF
+SQL> set autocommit on;
+SQL> create table customer(id number(5) primary key,name varchar2(30) not null, mobile number(11) unique, country varchar2(10) default 'BD');
+
+Table created.
+
+SQL> create sequence customer_id_seq increment by 10 start with 50 maxvalue 5000 nocycle nocache;
+
+Sequence created.
+
+SQL> create table customer_backup(id number(5) primary key,name varchar2(30) not null, mobile number(11) unique, country varchar2(10) default 'BD');
+
+Table created.
+
+
+
+
+
+
+////////////////////--------------ERRORS--------------------////////////////////////////
+
+
+SQL> create or replace trigger customer_after_update after update on customer for each row declare
+  2  begin
+  3  update usa_backup
+  4  set usaid = :new.usaid
+  5  where usaid = :old.usaid;
+  6  DBMS_OUTPUT.PUT_LINE('Record successfully updated into usa table');
+  7  end;
+  8  
+  9  
+ 10  
+ 11  
+ 12  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> create or replace trigger customer_after_update after update on customer for each row declare
+  2  begin
+  3  update customer_backup
+  4  set name=:new.name,mobile=:new.mobile
+  5  where
+  6  id = :old.id
+  7  \
+  8  
+  9  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> drop trigger customer_after_update;
+
+Trigger dropped.
+
+SQL> create or replace trigger customer_after_insert after insert on customer
+  2  for each row
+  3  declare
+  4  begin
+  5  insert into customer_backup values (:new.id,:new.name,:new.mobile,:new.country);
+  6  DBMS_OUTPUT.PUT_LINE('Record successfully inserted into usa_backup table');
+  7  END;
+  8  
+  9  \
+ 10  
+ 11  \
+ 12  
+ 13  
+ 14  /
+
+Warning: Trigger created with compilation errors.
+
+////////////////////--------------ERRORS END--------------------////////////////////////////
+
+
+
+
+
+
+SQL> create or replace trigger customer_after_insert after insert on customer
+  2  for each row
+  3  declare
+  4  begin
+  5  insert into customer_backup values (:new.id,:new.name,:new.mobile,:new.country);
+  6  DBMS_OUTPUT.PUT_LINE('Record successfully inserted into customer_backup table');
+  7  END;
+  8  /
+
+Trigger created.
+
+SQL> create or replace trigger customer_after_delete after delete on customer
+  2  for each row
+  3  declare
+  4  begin
+  5  delete customer_backup
+  6  where id=:old.id;
+  7  DBMS_OUTPUT.PUT_LINE('Record successfully deleted from customer_backup table');
+  8  end;
+  9  /
+
+Trigger created.
+
+SQL> create or replace trigger customer_after_update after update on customer
+  2  for each row
+  3  declare
+  4  begin
+  5  update customer_backup
+  6  set name = :new.name, mobile= :new.mobile
+  7  where
+  8  id = :old.id;
+  9  dbms_output.put_line('Record successfully updated into customer_backup table');
+ 10  end;
+ 11  /
+
+Trigger created.
+
+SQL> insert into customer(id,name,mobile,country) values (customer_id_seq.nextval,'mehedee',01731430177);
+insert into customer(id,name,mobile,country) values (customer_id_seq.nextval,'mehedee',01731430177)
+                                             *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> insert into customer(id,name,mobile) values (customer_id_seq.nextval,'mehedee',01731430177);
+
+1 row created.
+
+Commit complete.
+SQL> insert into customer(id,name,mobile) values (customer_id_seq.nextval,'hasan',01516193111);
+
+1 row created.
+
+Commit complete.
+SQL> insert into customer(id,name,mobile) values (customer_id_seq.nextval,'rakib',01918575382);
+
+1 row created.
+
+Commit complete.
+
+
+SQL> select * from customer;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 mehedee                        1731430177 BD                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+ 
+SQL> select * from customer_backup;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 mehedee                        1731430177 BD                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+
+SQL> insert into customer(id,name,mobile) values (customer_id_seq.nextval,'robin',01717959810);
+
+1 row created.
+
+Commit complete.
+SQL> insert into customer(id,name,mobile) values (customer_id_seq.nextval,'roni',01811842780);
+
+1 row created.
+
+Commit complete.
+SQL> insert into customer(id,name,mobile) values (customer_id_seq.nextval,'rafi',01913971850);
+
+1 row created.
+
+Commit complete.
+SQL> select * from customer;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 mehedee                        1731430177 BD                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+        90 roni                           1811842780 BD                         
+       100 rafi                           1913971850 BD                         
+
+6 rows selected.
+
+
+SQL> update customer set name = 'MEHEDEE HASAN' where id = 50;
+
+1 row updated.
+
+Commit complete.
+SQL> select * from customer;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 MEHEDEE HASAN                  1731430177 BD                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+        90 roni                           1811842780 BD                         
+       100 rafi                           1913971850 BD                         
+
+6 rows selected.
+
+SQL> select * from customer_backup;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 MEHEDEE HASAN                  1731430177 BD                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+        90 roni                           1811842780 BD                         
+       100 rafi                           1913971850 BD                         
+
+6 rows selected.
+
+SQL> delete from customer where id=90;
+
+1 row deleted.
+
+Commit complete.
+SQL> select * from customer;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 MEHEDEE HASAN                  1731430177 BD                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+       100 rafi                           1913971850 BD                         
+
+SQL> select * from customer_backup;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 MEHEDEE HASAN                  1731430177 BD                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+       100 rafi                           1913971850 BD                         
+
+SQL> spool off;
