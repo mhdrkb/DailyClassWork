@@ -1,0 +1,270 @@
+SQL> connect sys as sysdba
+Connected.
+SQL> conn
+Enter user-name: abcd
+Connected.
+SQL> create or replace procedure insrtProcedure(
+  2  p_id in customer.id%type,
+  3  p_name in customer.name%type,
+  4  p_mobile in customer.mobile%type,
+  5  p_country in customer.country%type)
+  6  is
+  7  begin
+  8  insert into customer(id,name,mobile,country) values(p_id,p_name,p_mobile,p_country);
+  9  end;
+ 10  /
+
+Procedure created.
+
+SQL> begin
+  2  insrtProcedure(customer_id_seq.nextval,'Sobuj',01731430122,'Japan');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customer;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 alu                            1756121212 US                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+       120 Rojina                         1915602221 BD                         
+       100 rafi                           1913971850 BD                         
+       110 Mortaza                        1915604111 BD                         
+       130 Shafi                          1915604541 BD                         
+       140 Mofiz                          1915612541 BD                         
+       150 Rana                           1915617841 BD                         
+       160 Jnal                           1900617841 BD                         
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+       170 shokhil                        1904417841 BD                         
+       180 sakil                          1904419941 BD                         
+       190 Sobuj                          1731430122 Japan                      
+
+14 rows selected.
+
+SQL> begin
+  2  insrtProcedure(customer_id_seq.nextval,'Sobuj',01731430122,'Japan');
+  3  insrtProcedure(customer_id_seq.nextval,'Kamal',01731250122,'Iran');
+  4  end;
+  5  /
+begin
+*
+ERROR at line 1:
+ORA-00001: unique constraint (ABCD.SYS_C007096) violated 
+ORA-06512: at "ABCD.INSRTPROCEDURE", line 8 
+ORA-06512: at line 2 
+
+
+SQL> begin
+  2  insrtProcedure(customer_id_seq.nextval,'sakib',01731430999,'India');
+  3  insrtProcedure(customer_id_seq.nextval,'Rahim',01733330999,'Iran');
+  4  end;
+  5  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customer;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 alu                            1756121212 US                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+       120 Rojina                         1915602221 BD                         
+       100 rafi                           1913971850 BD                         
+       110 Mortaza                        1915604111 BD                         
+       130 Shafi                          1915604541 BD                         
+       140 Mofiz                          1915612541 BD                         
+       150 Rana                           1915617841 BD                         
+       160 Jnal                           1900617841 BD                         
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+       170 shokhil                        1904417841 BD                         
+       180 sakil                          1904419941 BD                         
+       190 Sobuj                          1731430122 Japan                      
+       210 sakib                          1731430999 India                      
+       220 Rahim                          1733330999 Iran                       
+
+16 rows selected.
+
+SQL> create or replace procedure updtProcedure(
+  2   p_id in customer.id%type,
+  3    3  p_name in customer.name%type,
+  4    4  p_mobile in customer.mobile%type,
+  5    5  p_country in customer.country%type)
+  6    6  is
+  7  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> drop procedure  updtProcedure;
+
+Procedure dropped.
+
+SQL> create or replace procedure updtProcedure(
+  2   p_id in customer.id%type,
+  3  p_name in customer.name%type,
+  4  p_mobile in customer.mobile%type,
+  5   p_country in customer.country%type)
+  6  is
+  7  begin
+  8  update customer set name=p_name,mobile=p_mobile,country=p_country where id=p_id;
+  9  end;
+ 10  /
+
+Procedure created.
+
+SQL> begin
+  2  updtProcedure(200,'ajgubi',01711111111,'Uganda');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customer;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 alu                            1756121212 US                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+       120 Rojina                         1915602221 BD                         
+       100 rafi                           1913971850 BD                         
+       110 Mortaza                        1915604111 BD                         
+       130 Shafi                          1915604541 BD                         
+       140 Mofiz                          1915612541 BD                         
+       150 Rana                           1915617841 BD                         
+       160 Jnal                           1900617841 BD                         
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+       170 shokhil                        1904417841 BD                         
+       180 sakil                          1904419941 BD                         
+       190 Sobuj                          1731430122 Japan                      
+       210 sakib                          1731430999 India                      
+       220 Rahim                          1733330999 Iran                       
+
+16 rows selected.
+
+SQL> begin
+  2  updtProcedure(160,'ajgubi',01711111111,'Uganda');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customer;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 alu                            1756121212 US                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+       120 Rojina                         1915602221 BD                         
+       100 rafi                           1913971850 BD                         
+       110 Mortaza                        1915604111 BD                         
+       130 Shafi                          1915604541 BD                         
+       140 Mofiz                          1915612541 BD                         
+       150 Rana                           1915617841 BD                         
+       160 ajgubi                         1711111111 Uganda                     
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+       170 shokhil                        1904417841 BD                         
+       180 sakil                          1904419941 BD                         
+       190 Sobuj                          1731430122 Japan                      
+       210 sakib                          1731430999 India                      
+       220 Rahim                          1733330999 Iran                       
+
+16 rows selected.
+
+SQL> create or replace procedure dltProcedure(
+  2  p_id in customer.id%type)
+  3  is
+  4  begin
+  5  delete from customer where id=p_id;
+  6  end;
+  7  /
+
+Procedure created.
+
+SQL> begin
+  2  dltProcewdure(130);
+  3  end;
+  4  /
+dltProcewdure(130);
+*
+ERROR at line 2:
+ORA-06550: line 2, column 1: 
+PLS-00201: identifier 'DLTPROCEWDURE' must be declared 
+ORA-06550: line 2, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> begin
+  2  dltProcedure(130);
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customer;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 alu                            1756121212 US                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+       120 Rojina                         1915602221 BD                         
+       100 rafi                           1913971850 BD                         
+       110 Mortaza                        1915604111 BD                         
+       140 Mofiz                          1915612541 BD                         
+       150 Rana                           1915617841 BD                         
+       160 ajgubi                         1711111111 Uganda                     
+       170 shokhil                        1904417841 BD                         
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+       180 sakil                          1904419941 BD                         
+       190 Sobuj                          1731430122 Japan                      
+       210 sakib                          1731430999 India                      
+       220 Rahim                          1733330999 Iran                       
+
+15 rows selected.
+
+SQL> select * from customer_backup;
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+        50 alu                            1756121212 BD                         
+        60 hasan                          1516193111 BD                         
+        70 rakib                          1918575382 BD                         
+        80 robin                          1717959810 BD                         
+       120 Rojina                         1915602221 BD                         
+       100 rafi                           1913971850 BD                         
+       110 Mortaza                        1915604111 BD                         
+       140 Mofiz                          1915612541 BD                         
+       150 Rana                           1915617841 BD                         
+       160 ajgubi                         1711111111 BD                         
+       170 shokhil                        1904417841 BD                         
+
+        ID NAME                               MOBILE COUNTRY                    
+---------- ------------------------------ ---------- ----------                 
+       180 sakil                          1904419941 BD                         
+       190 Sobuj                          1731430122 Japan                      
+       210 sakib                          1731430999 India                      
+       220 Rahim                          1733330999 Iran                       
+
+15 rows selected.
+
+SQL> spool off;
