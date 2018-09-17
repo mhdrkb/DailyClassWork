@@ -1,0 +1,378 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Mon Sep 10 11:28:21 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect sys as sysdba
+Enter password:
+Connected.
+SQL> create user alu identified by alu;
+create user alu identified by alu
+            *
+ERROR at line 1:
+ORA-01920: user name 'ALU' conflicts with another user or role name
+
+
+SQL> create user dim identified by dim;
+
+User created.
+
+SQL> grant dba to dim;
+
+Grant succeeded.
+
+SQL> create table emp
+  2  (eid number, ename varchar2(30), salary number(8,2), hire_date date, address varchar2(50));
+
+Table created.
+
+SQL> alter table emp add constraint emp_eid_pk primary key(eid);
+
+Table altered.
+
+SQL> insert into emp(eid,ename,salary,hire_date,address) values(&eid,'&ename',&salary,'&hire_date','&address');
+Enter value for eid: 01
+Enter value for ename: Mehedee
+Enter value for salary: 70000
+Enter value for hire_date: 01-10-2017
+Enter value for address: MOhammadpur
+old   1: insert into emp(eid,ename,salary,hire_date,address) values(&eid,'&ename',&salary,'&hire_date','&address')
+new   1: insert into emp(eid,ename,salary,hire_date,address) values(01,'Mehedee',70000,'01-10-2017','MOhammadpur')
+insert into emp(eid,ename,salary,hire_date,address) values(01,'Mehedee',70000,'01-10-2017','MOhammadpur')
+                                                                              *
+ERROR at line 1:
+ORA-01843: not a valid month
+
+
+SQL> insert into emp(eid,ename,salary,hire_date,address) values(&eid,'&ename',&salary,'&hire_date','&address');
+Enter value for eid: 01
+Enter value for ename: Mehedee
+Enter value for salary: 70000
+Enter value for hire_date: 01 jan 2017
+Enter value for address: Mohammadpur
+old   1: insert into emp(eid,ename,salary,hire_date,address) values(&eid,'&ename',&salary,'&hire_date','&address')
+new   1: insert into emp(eid,ename,salary,hire_date,address) values(01,'Mehedee',70000,'01 jan 2017','Mohammadpur')
+
+1 row created.
+
+SQL> insert into emp(eid,ename,salary,hire_date,address) values(&eid,'&ename',&salary,'&hire_date','&address');
+Enter value for eid: 02
+Enter value for ename: Rakib
+Enter value for salary: 50000
+Enter value for hire_date: 01 feb 2017
+Enter value for address: Dhanmondi
+old   1: insert into emp(eid,ename,salary,hire_date,address) values(&eid,'&ename',&salary,'&hire_date','&address')
+new   1: insert into emp(eid,ename,salary,hire_date,address) values(02,'Rakib',50000,'01 feb 2017','Dhanmondi')
+
+1 row created.
+
+SQL> insert into emp(eid,ename,salary,hire_date,address) values(&eid,'&ename',&salary,'&hire_date','&address');
+Enter value for eid: 03
+Enter value for ename: Hasan
+Enter value for salary: 40000
+Enter value for hire_date: 03 jun 2017
+Enter value for address: Mohakhali
+old   1: insert into emp(eid,ename,salary,hire_date,address) values(&eid,'&ename',&salary,'&hire_date','&address')
+new   1: insert into emp(eid,ename,salary,hire_date,address) values(03,'Hasan',40000,'03 jun 2017','Mohakhali')
+
+1 row created.
+
+SQL> alter table emp add(mobile varchar2(11), job_title varchar2(50));
+
+Table altered.
+
+SQL> select ename, job_title, salary, salary+(salary*0.30) review_salary from emp;
+
+ENAME
+------------------------------
+JOB_TITLE                                              SALARY REVIEW_SALARY
+-------------------------------------------------- ---------- -------------
+Mehedee
+                                                        70000         91000
+
+Rakib
+                                                        50000         65000
+
+Hasan
+                                                        40000         52000
+
+
+SQL> alter table emp update(ename varchar2(20),address varchar2(20),job_title varchar2(20));
+alter table emp update(ename varchar2(20),address varchar2(20),job_title varchar2(20))
+                *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option
+
+
+SQL> alter table emp modify(ename varchar2(20),address varchar2(20),job_title varchar2(20));
+
+Table altered.
+
+SQL> select ename, job_title, salary, salary+(salary*0.30) review_salary from emp;
+
+ENAME                JOB_TITLE                SALARY REVIEW_SALARY
+-------------------- -------------------- ---------- -------------
+Mehedee                                        70000         91000
+Rakib                                          50000         65000
+Hasan                                          40000         52000
+
+SQL> update table emp set ename=Khobis where eid=03;
+update table emp set ename=Khobis where eid=03
+       *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> update emp set ename=Khobis where eid=03;
+update emp set ename=Khobis where eid=03
+                     *
+ERROR at line 1:
+ORA-00904: "KHOBIS": invalid identifier
+
+
+SQL> update emp set ename='Khobish' where eid=03;
+
+1 row updated.
+
+SQL> select ename, job_title, salary, salary+(salary*0.30) review_salary from emp;
+
+ENAME                JOB_TITLE                SALARY REVIEW_SALARY
+-------------------- -------------------- ---------- -------------
+Mehedee                                        70000         91000
+Rakib                                          50000         65000
+Khobish                                        40000         52000
+
+SQL> select ename, job_title, salary, from emp where salary=min(salary);
+select ename, job_title, salary, from emp where salary=min(salary)
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select ename, job_title, salary, from emp where salary=(select min(salary) from emp);
+select ename, job_title, salary, from emp where salary=(select min(salary) from emp)
+                                 *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select ename, job_title, salary from emp where salary=(select min(salary) from emp);
+
+ENAME                JOB_TITLE                SALARY
+-------------------- -------------------- ----------
+Khobish                                        40000
+
+SQL> select ename, job_title, salary from emp where salary=min(salary) ;
+select ename, job_title, salary from emp where salary=min(salary)
+                                                      *
+ERROR at line 1:
+ORA-00934: group function is not allowed here
+
+
+SQL> update emp set job_title = 'Manager' where eid=01;
+
+1 row updated.
+
+SQL> update emp set job_title = 'Admin' where eid=02;
+
+1 row updated.
+
+SQL> update emp set job_title = 'Officer' where eid=03;
+
+1 row updated.
+
+SQL> select ename, job_title, salary, salary+(salary*0.30) review_salary from emp;
+
+ENAME                JOB_TITLE                SALARY REVIEW_SALARY
+-------------------- -------------------- ---------- -------------
+Mehedee              Manager                   70000         91000
+Rakib                Admin                     50000         65000
+Khobish              Officer                   40000         52000
+
+SQL> create view v_emp as select eid,ename,salary,salary+(salary*0.30) as Review_Salary from emp;
+
+View created.
+
+SQL> select * from v_emp;
+
+       EID ENAME                    SALARY REVIEW_SALARY
+---------- -------------------- ---------- -------------
+         1 Mehedee                   70000         91000
+         2 Rakib                     50000         65000
+         3 Khobish                   40000         52000
+
+SQL> create sequence eid_seq increment by 1 start with 1 maxvalue 10000 nocache nocycle;
+
+Sequence created.
+
+SQL> insert into emp (eid,ename,salary,address) value(eid_seq.nextval,'Sabuj',40000,'Dhaka');
+insert into emp (eid,ename,salary,address) value(eid_seq.nextval,'Sabuj',40000,'Dhaka')
+                                           *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword
+
+
+SQL> insert into emp (eid,ename,salary,address) values (eid_seq.nextval,'Sabuj',40000,'Dhaka');
+insert into emp (eid,ename,salary,address) values (eid_seq.nextval,'Sabuj',40000,'Dhaka')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYS.EMP_EID_PK) violated
+
+
+SQL> drop sequence eid_seq;
+
+Sequence dropped.
+
+SQL> create sequence eid_seq increment by 1 start with 4 maxvalue 10000 nocache nocycle;
+
+Sequence created.
+
+SQL> insert into emp (eid,ename,salary,address) values (eid_seq.nextval,'Sabuj',40000,'Dhaka');
+
+1 row created.
+
+SQL> select * from emp;
+
+       EID ENAME                    SALARY HIRE_DATE ADDRESS
+---------- -------------------- ---------- --------- --------------------
+MOBILE      JOB_TITLE
+----------- --------------------
+         1 Mehedee                   70000 01-JAN-17 Mohammadpur
+            Manager
+
+         2 Rakib                     50000 01-FEB-17 Dhanmondi
+            Admin
+
+         3 Khobish                   40000 03-JUN-17 Mohakhali
+            Officer
+
+
+       EID ENAME                    SALARY HIRE_DATE ADDRESS
+---------- -------------------- ---------- --------- --------------------
+MOBILE      JOB_TITLE
+----------- --------------------
+         4 Sabuj                     40000           Dhaka
+
+
+
+SQL> alter table emp modify(ename varchar2(10), address varchar2(15),job_title varchar2(12));
+
+Table altered.
+
+SQL> select * from emp;
+
+       EID ENAME          SALARY HIRE_DATE ADDRESS         MOBILE
+---------- ---------- ---------- --------- --------------- -----------
+JOB_TITLE
+------------
+         1 Mehedee         70000 01-JAN-17 Mohammadpur
+Manager
+
+         2 Rakib           50000 01-FEB-17 Dhanmondi
+Admin
+
+         3 Khobish         40000 03-JUN-17 Mohakhali
+Officer
+
+
+       EID ENAME          SALARY HIRE_DATE ADDRESS         MOBILE
+---------- ---------- ---------- --------- --------------- -----------
+JOB_TITLE
+------------
+         4 Sabuj           40000           Dhaka
+
+
+
+SQL> alter table emp modify(ename varchar2(8), address varchar2(12),job_title varchar2(10));
+
+Table altered.
+
+SQL> select * from emp;
+
+       EID ENAME        SALARY HIRE_DATE ADDRESS      MOBILE      JOB_TITLE
+---------- -------- ---------- --------- ------------ ----------- ----------
+         1 Mehedee       70000 01-JAN-17 Mohammadpur              Manager
+         2 Rakib         50000 01-FEB-17 Dhanmondi                Admin
+         3 Khobish       40000 03-JUN-17 Mohakhali                Officer
+         4 Sabuj         40000           Dhaka
+
+SQL> insert into emp (eid,ename,salary,address,mobile,job_title) values (eid_seq.nextval,'Hasan',40000,'Dhaka','01731430177','Sales Officer');
+insert into emp (eid,ename,salary,address,mobile,job_title) values (eid_seq.nextval,'Hasan',40000,'Dhaka','01731430177','Sales Officer')
+                                                                                                                        *
+ERROR at line 1:
+ORA-12899: value too large for column "SYS"."EMP"."JOB_TITLE" (actual: 13,
+maximum: 10)
+
+
+SQL> insert into emp (eid,ename,salary,address,mobile,job_title) values (eid_seq.nextval,'Hasan',40000,'Dhaka','01731430177','Officer');
+
+1 row created.
+
+SQL> select * from emp;
+
+       EID ENAME        SALARY HIRE_DATE ADDRESS      MOBILE      JOB_TITLE
+---------- -------- ---------- --------- ------------ ----------- ----------
+         1 Mehedee       70000 01-JAN-17 Mohammadpur              Manager
+         2 Rakib         50000 01-FEB-17 Dhanmondi                Admin
+         3 Khobish       40000 03-JUN-17 Mohakhali                Officer
+         4 Sabuj         40000           Dhaka
+         6 Hasan         40000           Dhaka        01731430177 Officer
+
+SQL> create index emp_idx on emp(eid);
+create index emp_idx on emp(eid)
+                            *
+ERROR at line 1:
+ORA-01408: such column list already indexed
+
+
+SQL> create index emp_idx on emp(ename);
+
+Index created.
+
+SQL> select * from emp_idx;
+select * from emp_idx
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create table emp_backup as select * from emp;
+
+Table created.
+
+SQL> select * from emp_backup;
+
+       EID ENAME        SALARY HIRE_DATE ADDRESS      MOBILE      JOB_TITLE
+---------- -------- ---------- --------- ------------ ----------- ----------
+         1 Mehedee       70000 01-JAN-17 Mohammadpur              Manager
+         2 Rakib         50000 01-FEB-17 Dhanmondi                Admin
+         3 Khobish       40000 03-JUN-17 Mohakhali                Officer
+         4 Sabuj         40000           Dhaka
+         6 Hasan         40000           Dhaka        01731430177 Officer
+
+SQL> create or replace trigger emp_after_insert after insert on emp
+  2  for each row
+  3  declare
+  4  begin
+  5  insert into emp_backup values(:new.eid,:new.ename,:new.salary,:new.Hair_date,:new.address,:new.mobile,:new.job)
+  6  /
+create or replace trigger emp_after_insert after insert on emp
+                          *
+ERROR at line 1:
+ORA-04089: cannot create triggers on objects owned by SYS
+
+
+SQL> create or replace trigger emp_after_insert after insert on emp
+  2  for each row
+  3  declare
+  4  begin
+  5  insert into emp_backup values(:new.eid,:new.ename,:new.salary,:new.Hair_date,:new.address,:new.mobile,:new.job_title);
+  6  end;
+  7  /
+create or replace trigger emp_after_insert after insert on emp
+                          *
+ERROR at line 1:
+ORA-04089: cannot create triggers on objects owned by SYS
+
+
+SQL> do not logged in user that is why its not permitted by system a fault me mehedee hasan;

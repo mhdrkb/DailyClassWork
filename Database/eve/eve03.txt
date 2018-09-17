@@ -1,0 +1,297 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Thu Sep 6 12:16:27 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect sys as sysdba
+Enter password:
+Connected.
+SQL> create user bokka idendentified by bokka
+  2
+SQL> create user bokka idendentified by bokka;
+create user bokka idendentified by bokka
+                  *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> create user bokka identified by bokka;
+
+User created.
+
+SQL> grant dba to bokka;
+
+Grant succeeded.
+
+SQL> conn
+Enter user-name: bokka
+Enter password:
+Connected.
+SQL> create table employee(id number(3) primary key, name barchar2(20) not null, age number(3) check(age>18), country varchar2(10) default 'BD');
+create table employee(id number(3) primary key, name barchar2(20) not null, age number(3) check(age>18), country varchar2(10) default 'BD')
+                                                             *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table employee(id number(3) primary key, name varchar2(20) not null, age number(3) check(age>18), country varchar2(10) default 'BD');
+
+Table created.
+
+SQL> create table employee_backup as select * from employee;
+
+Table created.
+
+SQL> create sequence employee_seq increment by 5 start with 10 maxvalue 2000 nocycle nocache;
+
+Sequence created.
+
+SQL> create or replace trigger emp_after_insert after insert on employee
+  2  for each row
+  3  declare
+  4  begin
+  5  insert into employee_backup values(:new.id,:new.name,:new.age,:new.country);
+  6  end;
+  7  /
+
+Trigger created.
+
+SQL> create or replace procedure emp_insert_procedure(
+  2  p_id in employee.id%type,
+  3  p_name in employee.name%type,
+  4  p-age in employee.age%type,
+  5  p/
+  6  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> drop procedure emp_insert_procedure;
+
+Procedure dropped.
+
+SQL> create or replace procedure emp_insert_procedure(
+  2  p_id in employee.id%type,
+  3  p_name in employee.name%type,
+  4  p_age in employee.age%type,
+  5  p_country in employee.country%type)
+  6  is
+  7  begin
+  8  insert into employee(id,name,age,country) values
+  9  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> drop procedure emp_insert_procedure;
+
+Procedure dropped.
+
+SQL> create or replace procedure emp_insert_procedure(
+  2  p_id in employee.id%type,
+  3  p_name in employee.name%type,
+  4  p_age in employee.age%type,
+  5  p_country in employee.country%type)
+  6  is
+  7  begin
+  8  insert into employee(id,name,age,country) values(p_id,p_name,p_age,p_country);
+  9  end;
+ 10  /
+
+Procedure created.
+
+SQL> begin
+  2  emp_insert_procedure(employee_seq.nextval, 'Mehedee', 27, 'bangladesh');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  emp_insert_procedure(employee_seq.nextval, 'Hasan', 20, 'Japan');
+  3  emp_insert_procedure(employee_seq.nextval, 'rakib', 25, 'Bhutan');
+  4  emp_insert_procedure(employee_seq.nextval, 'sabuj', 30, 'Nepal');
+  5  emp_insert_procedure(employee_seq.nextval, 'Omar', 40, 'Pakisthan');
+  6  emp_insert_procedure(employee_seq.nextval, 'Madhuri', 35, 'India');
+  7  emp_insert_procedure(employee_seq.nextval, 'Karina', 30, 'India');
+  8  emp_insert_procedure(employee_seq.nextval, 'Khan', 38, 'India');
+  9  end;
+ 10  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from employee;
+
+        ID NAME                        AGE COUNTRY
+---------- -------------------- ---------- ----------
+        10 Mehedee                      27 bangladesh
+        15 Hasan                        20 Japan
+        20 rakib                        25 Bhutan
+        25 sabuj                        30 Nepal
+        30 Omar                         40 Pakisthan
+        35 Madhuri                      35 India
+        40 Karina                       30 India
+        45 Khan                         38 India
+
+8 rows selected.
+
+SQL> select * from employee_backup;
+
+        ID NAME                        AGE COUNTRY
+---------- -------------------- ---------- ----------
+        10 Mehedee                      27 bangladesh
+        15 Hasan                        20 Japan
+        20 rakib                        25 Bhutan
+        25 sabuj                        30 Nepal
+        30 Omar                         40 Pakisthan
+        35 Madhuri                      35 India
+        40 Karina                       30 India
+        45 Khan                         38 India
+
+8 rows selected.
+
+SQL> create or replace trigger emp__after_update after update on employee
+  2  for each row
+  3  declare
+  4  begin
+  5  update employee_backup
+  6  set name = :new.name, age = :new.age, country = :new.country
+  7  where id = :old.id;
+  8  end;
+  9  /
+
+Trigger created.
+
+SQL> create or replace trigger emp_after_delete after delete on employee
+  2  for each row
+  3  declare
+  4  begin
+  5  delete employee_backup where id = :old.id;
+  6  end;
+  7  /
+
+Trigger created.
+
+SQL> create or replace procedure emp_update_procedure(
+  2  p_id in employee.id%type,
+  3  p_name in employee.name%type,
+  4  p_age in employee.age%type,
+  5  p_country in emplyee.country%type)
+  6  is
+  7  begin
+  8  update employee set name = p_name, age = p_age, country = p_country where id =p_id;
+  9  end;
+ 10  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> drop procedure emp_update_procedure;
+
+Procedure dropped.
+
+SQL> create or replace procedure emp_update_procedure(
+  2  p_id in employee.id%type,
+  3  p_name in employee.name%type,
+  4  p_age in employee.age%type,
+  5  p_country in employee.country%type)
+  6  is
+  7  begin
+  8  update employee set name = p_name, age = p_age, country = p_country where id =p_id;
+  9  end;
+ 10  /
+
+Procedure created.
+
+SQL> create or replace procedure emp_delete_procedure(
+  2  p_id in employee.id%type)
+  3  is
+  4  begin
+  5  delete from customer where id = p_id;
+  6  end;
+  7  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> drop procedure emp_delete_procedure;
+
+Procedure dropped.
+
+SQL> create or replace procedure emp_delete_procedure(
+  2  p_id in employee.id%type)
+  3  is
+  4  begin
+  5  delete from employee where id = p_id;
+  6  end;
+  7  /
+
+Procedure created.
+
+SQL> begin
+  2  emp_delete_procedure(20);
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from employee;
+
+        ID NAME                        AGE COUNTRY
+---------- -------------------- ---------- ----------
+        10 Mehedee                      27 bangladesh
+        15 Hasan                        20 Japan
+        25 sabuj                        30 Nepal
+        30 Omar                         40 Pakisthan
+        35 Madhuri                      35 India
+        40 Karina                       30 India
+        45 Khan                         38 India
+
+7 rows selected.
+
+SQL> select * from employee_backup;
+
+        ID NAME                        AGE COUNTRY
+---------- -------------------- ---------- ----------
+        10 Mehedee                      27 bangladesh
+        15 Hasan                        20 Japan
+        25 sabuj                        30 Nepal
+        30 Omar                         40 Pakisthan
+        35 Madhuri                      35 India
+        40 Karina                       30 India
+        45 Khan                         38 India
+
+7 rows selected.
+
+SQL> begin
+  2  emp_update_procedure(25 , 'ODVUT', 200, 'Uganda');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from employee;
+
+        ID NAME                        AGE COUNTRY
+---------- -------------------- ---------- ----------
+        10 Mehedee                      27 bangladesh
+        15 Hasan                        20 Japan
+        25 ODVUT                       200 Uganda
+        30 Omar                         40 Pakisthan
+        35 Madhuri                      35 India
+        40 Karina                       30 India
+        45 Khan                         38 India
+
+7 rows selected.
+
+SQL> select * from employee_backup;
+
+        ID NAME                        AGE COUNTRY
+---------- -------------------- ---------- ----------
+        10 Mehedee                      27 bangladesh
+        15 Hasan                        20 Japan
+        25 ODVUT                       200 Uganda
+        30 Omar                         40 Pakisthan
+        35 Madhuri                      35 India
+        40 Karina                       30 India
+        45 Khan                         38 India
+
+7 rows selected.
+
+SQL>
